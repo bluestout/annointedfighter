@@ -14,7 +14,7 @@
 
 <div class="homepage_content clearfix">
   <div class="container">
-    <div class="sixteen columns text-align--{{ section.settings.frontpage_text_align }}">
+    <div class="six columns text-align--{{ section.settings.frontpage_text_align }}">
       <div {% unless section.settings.wide_display %}class="content_padding"{% endunless %}>
         {% if section.settings.title != blank %}
           <h2 class="title align_{{ section.settings.frontpage_text_align }}">
@@ -27,45 +27,44 @@
         {% if section.settings.newsletter_richtext != blank %}
           <div class="newsletter-text">{{ section.settings.newsletter_richtext }}</div>
         {% endif %}
+      </div>
+    </div>
+    <div class="eight columns text-align--{{ section.settings.frontpage_text_align }} form_content">
+      <div class="newsletter newsletter--{{ section.settings.frontpage_text_align }}">
+        {% form 'customer' %}
+          {% if form.posted_successfully? %}
+            <p class="message">{{ 'general.newsletter_form.success_text' | t }}</p>
+          {% elsif form.errors %}
+            {% for field in form.errors %}
+              <p class="message">{{ field }} - {{ form.errors.messages[field] }}</p>
+            {% endfor %}
+          {% else %}
 
-        <div class="newsletter newsletter--{{ section.settings.frontpage_text_align }}">
-          {% form 'customer' %}
-            {% if form.posted_successfully? %}
-              <p class="message">{{ 'general.newsletter_form.success_text' | t }}</p>
-            {% elsif form.errors %}
-              {% for field in form.errors %}
-                <p class="message">{{ field }} - {{ form.errors.messages[field] }}</p>
-              {% endfor %}
+            {% if template contains "password" %}
+              <input type="hidden" name="contact[tags]" value="prospect,password page"/>
             {% else %}
+              <input type="hidden" name="contact[tags]" value="newsletter"/>
+            {% endif %}
 
-              {% if template contains "password" %}
-                <input type="hidden" name="contact[tags]" value="prospect,password page"/>
-              {% else %}
-                <input type="hidden" name="contact[tags]" value="newsletter"/>
+            <div class="input-row">
+              {% if section.settings.show_first_name %}
+                <input class="newsletter-half first-name" type="text" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+              {% endif %}
+              {% if section.settings.show_last_name %}
+                <input class="newsletter-half last-name" type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
               {% endif %}
 
-              <div class="input-row">
-                {% if section.settings.show_first_name %}
-                  <input class="newsletter-half first-name" type="text" name="contact[first_name]" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
-                {% endif %}
-                {% if section.settings.show_last_name %}
-                  <input class="newsletter-half last-name" type="text" name="contact[last_name]" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
-                {% endif %}
+              {% if section.settings.show_first_name and section.settings.show_last_name %}
+                </div>
+                <div class="input-row">
+              {% endif %}
 
-                {% if section.settings.show_first_name and section.settings.show_last_name %}
-                  </div>
-                  <div class="input-row">
-                {% endif %}
-
-                <input type="hidden" name="challenge" value="false" />
-                <input type="email" class="contact_email" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
-                <input type='submit' class="action_button sign_up" value="{{ 'general.newsletter_form.submit' | t }}" />
-              </div>
-            {% endif %}
-          {% endform %}
-        </div>
-
-
+              <input type="hidden" name="challenge" value="false" />
+              <input type="email" class="contact_email" name="contact[email]" required placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
+              <input type='submit' class="action_button sign_up" value="{{ 'general.newsletter_form.submit' | t }}" />
+            </div>
+          {% endif %}
+        {% endform %}
       </div>
     </div>
   </div>

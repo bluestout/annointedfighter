@@ -1,3 +1,4 @@
+{% unless template contains '404' %}
 {% if section.settings.promo_text != blank and section.settings.show_announcement %}
   {% if section.settings.promo_home_page and template.name == 'index' %}
     <div class="promo_banner js-promo_banner--index sticky-promo--{{ section.settings.fixed_header }}">
@@ -13,6 +14,7 @@
     </div>
   {% endif %}
 {% endif %}
+{% endunless %}
 
 <div id="header" class="mm-fixed-top Fixed mobile-header mobile-sticky-header--{{ section.settings.fixed_header }}" data-search-enabled="{{ section.settings.search_enabled }}">
   <a href="#nav" class="icon-menu" aria-haspopup="true" aria-label="{{ 'layout.general.menu' | t }}"><span>{{ 'layout.general.menu' | t }}</span></a>
@@ -88,7 +90,7 @@
 
   <form action="/checkout" method="post" id="cart">
     <ul data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}">
-      <li class="mm-subtitle"><a class="continue ss-icon" href="#cart"><span class="icon-close"></span></a></li>
+      <li class="mm-subtitle"><h1 class="align_left">Your cart</h1><a class="continue ss-icon close-cart-drawer" href="#cart"><span class="fa fa-close"></span></a></li>
 
       {% if cart.item_count == 0 %}
         <li class="empty_cart">{{ 'layout.general.empty_cart' | t }}</li>
@@ -96,7 +98,9 @@
         {% for item in cart.items %}
           <li class="cart_item {% if forloop.last %}last_cart_item{% endif %}">
             <p class="mm-counter">
-              <span class="icon-minus minus"></span><input type="number" min="0" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" readonly /><span class="icon-plus plus"></span>
+              <span class="quantity--label">{{ 'cart.general.quantity' | t }}</span>
+              <span class="fa fa-minus minus"></span><input type="number" min="0" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" readonly /><span class="fa fa-plus plus"></span>
+              <span class="remove_cart">{{ 'cart.general.remove' | t }}</span>
             </p>
             <a href="{{ item.url }}">
               {% if item.image %}
@@ -108,7 +112,7 @@
                 {{ item.product.title }}
                 {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
                   {% for option in item.product.options %}
-                    {% if forloop.first %}- {% endif %}{{ item.variant.options[forloop.index0] }} {% unless forloop.last %}/{% endunless %}
+                    <span class="item-variant"><strong>{{ option }}</strong> {{ item.variant.options[forloop.index0] }}</span>
                   {% endfor %}
                 {% endunless %}
 
@@ -122,18 +126,19 @@
                   {% endfor %}
                 {% endif %}
                 <div class="price">
-                  <span class="money">{{ item.price | money }}</span>
+                  <span class="money"><strong>{{ 'cart.general.price' | t }}</strong> {{ item.price | money }}</span>
                 </div>
               </div>
             </a>
           </li>
         {% endfor %}
         <li class="mm-label">
+          <p class="mm-shipping--text">{{ 'cart.general.shipping_text' | t }}</p>
           <p class="mm-counter price">
             <span class="money">{{ cart.total_price | money }}</span>
           </p>
-          <a href="/cart">
-            <strong>{{ 'layout.general.subtotal' | t }}</strong>
+          <a href="/cart" class="mm-cart--link">
+            {{ 'layout.general.subtotal' | t }}
           </a>
         </li>
 
@@ -152,6 +157,7 @@
           {% endif %}
 
           <input type="submit" class="action_button {% if settings.display_view_cart or settings.side_cart_position == "bottom" %}right{% else %}full-width{% endif %}" value="{{ 'layout.general.checkout' | t }}" />
+          <a href="#" class="continue">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
           {% if settings.display_view_cart %}
           	<a href="/cart" class="action_button edit_cart right">{{ 'layout.general.edit_cart' | t }}</a>
           {% endif %}
@@ -188,7 +194,7 @@
               is-absolute
             {% endif %}
             {% if template contains 'index' %}
-              animated fadeIn
+              animated fadeIn header--index
             {% endif %}
             {% if settings.header_background %}
               header_bar
@@ -197,7 +203,7 @@
               header_bar
             {% endif %}" data-dropdown-position="{{ section.settings.dropdown_position }}">
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="three columns logo {% if section.settings.logo_home != nil %}secondary-logo--true{% endif %}">
       <a href="{{ shop.url }}" title="{{ shop.name }}">
         {% if section.settings.logo != nil or section.settings.logo_home != nil %}
@@ -214,29 +220,8 @@
       </a>
     </div>
 
+    {% unless template contains '404' %}
     <div class="thirteen columns nav mobile_hidden">
-      <ul class="menu right">
-        {% if settings.show_multiple_currencies %}
-          <li class="currencies">
-            {% include 'currencies-switcher' %}
-          </li>
-        {% endif %}
-        {% if shop.customer_accounts_enabled %}
-          <li class="header-account">
-            <a href="/account" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}">{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</a>
-          </li>
-        {% endif %}
-        {% if section.settings.search_enabled %}
-          <li class="search">
-            <a href="/search" title="{{ 'general.search.title' | t }}" id="search-toggle"><span class="icon-search"></span></a>
-          </li>
-        {% endif %}
-        <li class="cart">
-          <a href="#cart" class="icon-cart cart-button"><span>{{ cart.item_count }}</span></a>
-          <a href="/cart" class="icon-cart cart-button no-js-only"><span>{{ cart.item_count }}</span></a>
-        </li>
-      </ul>
-
       <ul class="menu {{ section.settings.menu_alignment }}" role="navigation">
         {% assign main_menu = linklists[section.settings.main_linklist] %}
         {% for link in main_menu.links %}
@@ -258,24 +243,28 @@
 
             <li class="sub-menu" aria-haspopup="true" aria-expanded="false">
               <a href="{{ link.url }}" class="dropdown-link {% if link.active or link.child_active %}active{% endif %}">{{ link.title }}
-              <span class="icon-arrow-down"></span></a>
+              <!--<span class="icon-arrow-down"></span>--></a>
               <div class="dropdown animated fadeIn {% if count > column_threshold %}dropdown-wide {% if forloop.last %}dropdown-left{% endif %}{% endif %}">
-                <div class="dropdown-links clearfix">
+                <div class="dropdown-links">
                   <ul>
                     {% assign count = 0 %}
-                    {% assign split = false %}
                     {% for sub_link in link.links %}
                       {% assign count = count | plus: 1 %}
-                      <li><a href="{{ sub_link.url }}">{{ sub_link.title }}</a></li>
-                      {% for sub_sub_link in sub_link.links %}
-                        {% assign count = count | plus: 1 %}
-                        <li>
-                          <a class="sub-link" href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
-                        </li>
-                      {% endfor %}
+                      <li>
+                        <a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+                        {% if sub_link.links != blank %}
+                        <ul class="semi-sub-menu">
+                          {% for sub_sub_link in sub_link.links %}
+                            <li>
+                              <a class="sub-link" href="{{ sub_sub_link.url }}">{{ sub_sub_link.title }}</a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                        {% endif %}
+                      </li>
 
-                      {% if count >= column_threshold and split == false %}
-                        {% assign split = true %}
+                      {% assign unit = count | modulo: 5 %}
+                      {% if unit == 0 %}
                         </ul>
                         <ul>
                       {% endif %}
@@ -288,6 +277,38 @@
         {% endfor %}
       </ul>
     </div>
+    <div class="four columns nav mobile_hidden">
+      <ul class="menu right">
+        {% if settings.show_multiple_currencies %}
+          <li class="currencies">
+            {% include 'currencies-switcher' %}
+          </li>
+        {% endif %}
+        {% if section.settings.search_enabled %}
+          <li class="search">
+            <a href="/search" title="{{ 'general.search.title' | t }}" id="search-toggle"><span class="fa fa-search"></span></a>
+            <form action="/search" class="header--search">
+              {% if settings.search_option != 'everything' %}
+                <input type="hidden" name="type" value="product" />
+              {% endif %}
+              <input type="text" name="q" value="{% if search and search.results.first.price %}{{ search.terms }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
+            </form>
+          </li>
+        {% endif %}
+        {% if shop.customer_accounts_enabled %}
+          <li class="header-account">
+            <a href="/account" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}">
+              <img src="{{ 'account.png' | asset_url}}">
+            </a>
+          </li>
+        {% endif %}
+        <li class="cart">
+          <a href="#cart" class="cart-button"><img src="{{ 'cart.png' | asset_url }}"><!--<span class="cart-count">{{ cart.item_count }}</span>--></a>
+          <a href="/cart" class="cart-button no-js-only"><img src="{{ 'cart.png' | asset_url }}"><!--<span class="cart-count">{{ cart.item_count }}</span>--></a>
+        </li>
+      </ul>
+    </div>
+    {% endunless %}
 
   </div>
 </div>
@@ -305,6 +326,7 @@
     max-width: 100%;
     max-height: 200px;
     display: block;
+    margin-bottom: 0;
   }
   .mm-title img {
     max-width: 100%;

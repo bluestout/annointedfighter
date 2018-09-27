@@ -61,15 +61,13 @@
   </div>
 {% endif %}
 
-<div class="container main content main-wrapper">
+{% if section.settings.display_collection_header_title and section.settings.featured_collection_image == blank %}
+  <div class="content container-fluid banner-title">
+    <h1 class="center">{{ collection.title }}</h1>
+  </div>
+{% endif %}
+<div class="container main main-wrapper">
   {% paginate collection.products by section.settings.pagination_limit %}
-
-    {% if section.settings.display_collection_header_title and section.settings.featured_collection_image == blank %}
-      <div class="sixteen columns">
-        <h1 class="center">{{ collection.title }}</h1>
-        <div class="feature_divider"></div>
-      </div>
-    {% endif %}
 
     <div class="section clearfix">
       <div class="sixteen columns breadcrumb">
@@ -140,7 +138,7 @@
 
     {% if sidebar %}
       {% include 'sidebar' %}
-      <div class="twelve columns">
+      <div class="thirteen products--list columns">
     {% else %}
       <div class="sixteen columns">
     {% endif %}
@@ -320,6 +318,11 @@
     {
       "type": "filter_by_tag",
       "name": "Tag list",
+      "limit": 1
+    },
+    {
+      "type": "sort",
+      "name": "Sort",
       "limit": 1
     },
     {

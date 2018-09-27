@@ -1373,6 +1373,17 @@
     ]
   },
   {
+    "name": "Account",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "account_login_banner",
+        "label": "Background image",
+        "info": "2048 x 2048px recommended"
+      }
+    ]
+  },
+  {
     "name": "Favicon",
     "settings": [
       {

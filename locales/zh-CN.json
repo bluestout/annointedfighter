@@ -7,7 +7,8 @@
     "404": {
       "title": "找不到页面",
       "subtext": "抱歉，我们找不到你要求的页面",
-      "continue_shopping_html": "试试看其他搜寻或<a href=\"\/collections\/all\">继续购物<\/a>"
+      "continue_shopping_html": "试试看其他搜寻或<a href=\"\/collections\/all\">继续购物<\/a>",
+      "back_btn_text": "回到主頁"
     },
     "password_page": {
       "opening_soon": "即将开幕",
@@ -162,7 +163,8 @@
       "items_left_count": {
         "one": "库存剩下",
         "other": "库存剩下"
-      }
+      },
+      "shipping_banner": "Free shipping over $100"
     },
     "notify_form": {
       "email": "请输入您的电邮地址",
@@ -177,6 +179,7 @@
       "name": "姓名",
       "email": "邮件地址",
       "phone": "联络电话",
+      "goals": "What are your Fitness Goals",
       "message": "信件内容",
       "send": "寄出",
       "post_success": "谢谢您与我们联系。我们将尽快回复您。"

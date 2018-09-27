@@ -7,16 +7,15 @@
     {% endif %}
 
       {% if section.settings.title != blank %}
-        <h2 class="title center">
+        <h2 class="title text-left">
           {{ section.settings.title | escape }}
         </h2>
-        <div class="feature_divider"></div>
       {% endif %}
 
       {% if section.blocks.size > 0 %}
         <div class="gallery-bar">
           {% for block in section.blocks %}
-            <div class="gallery_image {% if images_per_row == 2 %}two-per-row{% elsif images_per_row == 3 %}three-per-row{% else %}four-per-row{% endif %}" {{ block.shopify_attributes }}>
+            <div class="gallery_image {% if images_per_row == 2 %}two-per-row{% elsif images_per_row == 3 %}three-per-row{% else %}six-per-row{% endif %}" {{ block.shopify_attributes }}>
               {% if block.settings.image != blank %}
                 <a href="{{ block.settings.image |  img_url: '2000x' }}" rel="gallery" class="lightbox {% if section.settings.select_layout == 'standard' %}add-padding{% endif %}">
                   <img  src="{{ block.settings.image | img_url: '300x', crop: 'center' }}"
@@ -45,10 +44,28 @@
                 {% cycle '', '', '<br class="clear" />' %}
               {% elsif images_per_row == 4 %}
                 {% cycle '', '', '', '<br class="clear" />' %}
+              {% elsif images_per_row == 5 %}
+                {% cycle '', '', '', '', '<br class="clear" />' %}
+              {% elsif images_per_row == 6 %}
+                {% cycle '', '', '', '', '', '<br class="clear" />' %}
               {% endif %}
           {% endfor %}
         </div>
       {% endif %}
+        <div class="gallery-note clearfix">
+          <div class="twelve columns">
+          {% if section.settings.text != blank %}
+            {{ section.settings.text }}
+          {% endif %}
+          </div>
+          <div class="three columns right">
+          {% if section.settings.button_label != blank %}
+            <a {% if section.settings.button_link != blank %}href="{{ section.settings.button_link }}"{% endif %} class="action_button">
+              {{ section.settings.button_label | escape }}
+            </a>
+          {% endif %}
+          </div>
+        </div>
     {% if section.settings.select_layout == false %}
       </div>
     {% endif %}
@@ -76,9 +93,24 @@
         "id": "grid-size",
         "label": "Images per row",
         "min": 2,
-        "max": 4,
+        "max": 6,
         "step": 1,
-        "default": 4
+        "default": 6
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
       }
     ],
     "blocks": [
@@ -100,6 +132,12 @@
         "name": "Gallery",
         "category": "Image",
         "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
           {
             "type": "image"
           },

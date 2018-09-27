@@ -1,15 +1,6 @@
 <div class="container main content main-wrapper">
   <div class="sixteen columns">
     <div class="clearfix breadcrumb">
-      <div class="nav_arrows">
-        {% if collection.previous_product %}
-          <a href="{{ collection.previous_product }}" title="{{ 'products.general.previous_product_html' | t }}" class="ss-icon prev"><span class="icon-circle-left"></span></a>
-        {% endif %}
-
-        {% if collection.next_product %}
-          <a href="{{collection.next_product}}" title="{{ 'products.general.next_product_html' | t }}" class="ss-icon next"><span class="icon-circle-right"></span></a>
-        {% endif %}
-      </div>
       {% include "product-breadcrumb" %}
     </div>
   </div>
@@ -37,11 +28,11 @@
        data-slideshow-speed="{{settings.slideshow_speed}}"
        itemscope itemtype="http://schema.org/Product">
 
-      <div class="{% if sidebar %}seven{% else %}nine{% endif %} columns {% if product-images == blank %}{% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}{% endif %} {% if section.settings.product_images_position == 'right' %}mobile_only{% endif %}">
+      <div class="{% if sidebar %}seven{% else %}ten{% endif %} columns {% if product-images == blank %}{% if section.settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}{% endif %} {% if section.settings.product_images_position == 'right' %}mobile_only{% endif %}">
         {% include 'product-images' %}
       </div>
 
-      <div class="{% if sidebar %}five{% else %}seven{% endif %} columns {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
+      <div class="{% if sidebar %}five{% else %}six{% endif %} columns {% if section.settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
 
         {% assign collection_handles = product.collections | map: 'handle' %}
         {% assign variant = product.selected_or_first_available_variant %}
@@ -59,10 +50,6 @@
           </p>
         {% endif %}
 
-        {% if settings.enable_shopify_product_badges %}
-          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-        {% endif %}
-
         {% unless collection_handles contains 'coming-soon' %}
           <p class="modal_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
@@ -70,9 +57,14 @@
             <link itemprop="availability" href="http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}">
             <meta itemprop="itemCondition" content="New" />
 
-            <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+            <span class="sold_out hidden">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+            {% if variant.price < variant.compare_at_price and variant.available %}
+            <span class="was_price">
+              <span class="money">{{ variant.compare_at_price | money }}</span>
+            </span>
+            {% endif %}
             <span itemprop="price" content="{{ variant.price | money_without_currency | remove: "," }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
-              <span class="current_price {% if product.available == false %}hidden{% endif %}">
+              <span class="current_price">
                 {% if variant.price > 0 %}
                   <span class="money">{{ variant.price | money }}</span>
                 {% else %}
@@ -80,16 +72,11 @@
                 {% endif %}
               </span>
             </span>
-            <span class="was_price">
-              {% if variant.price < variant.compare_at_price and variant.available %}
-                <span class="money">{{ variant.compare_at_price | money }}</span>
-              {% endif %}
-            </span>
           </p>
-          {% if settings.notify_me_form %}
-            {% include 'product-notify-me' %}
-          {% endif %}
         {% endunless %}
+        {% if settings.enable_shopify_product_badges %}
+          <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+        {% endif %}
 
         {% if section.settings.product_description_position == "top" %}
           {% if product.description != blank %}
@@ -101,15 +88,42 @@
 
         {% unless collection_handles contains 'coming-soon' %}
           {% include 'product-form' with 'product' %}
+          {% if settings.notify_me_form %}
+            {% include 'product-notify-me' %}
+          {% endif %}
         {% endunless %}
+        <p class="help-text">{{ 'products.product.shipping_banner' | t }}</p>
 
         {% if section.settings.product_description_position == "bottom" %}
           {% if product.description != blank %}
-           <div class="description" itemprop="description">
-            {{ product.description | split: '<!-- split -->' | first }}
-           </div>
+           <div id="tab-container" class="tab-container">
+            <ul class='etabs'>
+              <li class='tab'><a href="#tabs-description">Description</a></li>
+              <li class='tab'><a href="#tabs-ingredient">Ingredient list</a></li>
+              <li class='tab'><a href="#tabs-shipping">Shipping & Returns</a></li>
+            </ul>
+            <div id="tabs-description">
+              <p>{{ product.description }}</p>
+            </div>
+            <div id="tabs-ingredient">
+              <p>{{ product.metafields["global"]["ingredient"] }}</p>
+            </div>
+            <div id="tabs-shipping">
+              <p>{{ product.metafields["global"]["shipping"] }}</p>
+            </div>
+          </div>
           {% endif %}
         {% endif %}
+        <div class="icons-wrapper">
+          <div class="item">
+            <img src="{{ 'money_back_gurantee.png' | asset_url }}">
+            <span>Money back guarantee</span>
+          </div>
+          <div class="item">
+            <img src="{{ 'made_in_the_USA.png' | asset_url }}">
+            <span>Made in the USA</span>
+          </div>
+        </div>
 
         {% if settings.enable_shopify_review_comments and settings.review_position == "top" %}
           <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
@@ -180,41 +194,6 @@
     {% endif %}
     </div>
 
-
-    {% if section.settings.display_related_products %}
-      {% capture limit %}{{ section.settings.products_per_row | plus: 1 }}{% endcapture %}
-
-      {% if collection and collection.all_products_count > 1 %}
-        {% assign col = collection.handle %}
-      {% else %}
-        {% assign col = product.collections.last.handle %}
-      {% endif %}
-
-      {% for tag in product.tags %}
-        {% if tag contains 'meta-related-collection-' %}
-          {% assign related_collection_handle = tag | remove: 'meta-related-collection-' %}
-          {% if collections[related_collection_handle].all_products_count > 0 %}
-            {% assign col = related_collection_handle %}
-            {% assign collection = collections[col] %}
-            {% capture limit %}{{ collection.products_count | plus: 1 }}{% endcapture %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-
-      {% if col and collections[col].all_products_count > 0 %}
-        {% if collections[col].all_products_count != 1 or collections[col].products.first.id != product.id %}
-          <br class="clear" />
-          <h4 class="title center">{{ 'products.product.related_items' | t }}</h4>
-          <div class="feature_divider"></div>
-
-          {% assign skip_product = product %}
-          {% assign products = collections[col].products %}
-          {% assign products_per_row = section.settings.products_per_row %}
-          {% include 'product-loop' with sidebar: sidebar %}
-        {% endif %}
-      {% endif %}
-    {% endif %}
-
   </div>
 </div>
 
@@ -271,21 +250,6 @@
       "type": "checkbox",
       "id": "display_collections",
       "label": "Show collections"
-    },
-    {
-      "type": "checkbox",
-      "id": "display_related_products",
-      "label": "Show related products ([?](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115006909487-Related-Products))",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "products_per_row",
-      "label": "Related products per row",
-      "min": 2,
-      "max": 4,
-      "step": 1,
-      "default": 3
     },
     {
       "type": "radio",

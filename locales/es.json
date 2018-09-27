@@ -6,7 +6,8 @@
     "404": {
       "title": "Página no encontrada",
       "subtext": "Lo sentimos, pero la página solicitada no existe.",
-      "continue_shopping_html": "Prueba a buscar o <a href=\"\/collections\/all\">sigue comprando →<\/a>"
+      "continue_shopping_html": "Prueba a buscar o <a href=\"\/collections\/all\">sigue comprando →<\/a>",
+      "back_btn_text": "Volver a la página de inicio"
     },
     "password_page": {
       "opening_soon": "Próxima apertura",
@@ -165,7 +166,8 @@
       "items_left_count": {
         "one": "artículo queda",
         "other": "artículos quedan"
-      }
+      },
+      "shipping_banner": "Free shipping over $100"
     },
     "notify_form": {
       "email": "Introduce tu dirección de correo electrónico...",
@@ -180,6 +182,7 @@
       "name": "Nombre",
       "email": "Correo electrónico",
       "phone": "Número de teléfono",
+      "goals": "What are your Fitness Goals",
       "message": "Mensaje",
       "send": "Enviar",
       "post_success": "Gracias por ponerte en contacto con nosotros. Nos pondremos en contacto contigo lo antes posible."

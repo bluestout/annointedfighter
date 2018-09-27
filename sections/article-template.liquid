@@ -51,6 +51,10 @@
   </div>
 {% endif %}
 
+<div class="container-fluid content banner-title">
+  <h1 style="text-transform: none;">{{ blog.title | escape }}</h1>
+</div>
+
 {% comment %}Check to see if sidebar should be enabled{% endcomment %}
 {% if section.blocks.size > 0 %}
   {% assign sidebar = true %}
@@ -58,10 +62,63 @@
   {% assign sidebar = false %}
 {% endif %}
 
-<div class="container main content main-wrapper">
+<div class="container main main-wrapper">
   {% paginate article.comments by 100 %}
 
-    <div class="twelve columns {% if sidebar == false %}offset-by-two{% endif %}">
+    <div class="seven columns alpha">
+      {% unless article.image and section.settings.banner_image %}
+        <h1 class="article_title {% unless sidebar %}align_left{% endunless %}">{{ article.title }}</h1>
+      {% endunless %}
+      <p><strong>{{ article.excerpt }}</strong></p>
+      <div class="text-align--left">
+        {% include "social-buttons" with "article" %}
+      </div>
+      <div class="accordion-container">
+        <div class="faq-c">
+          <div class="faq-q"><i class="fa fa-plus faq-t"></i>Bio</div>
+          <div class="faq-a">
+            {{ article.metafields["global"]["bio"] }}
+          </div>
+        </div>
+        <div class="faq-c">
+          <div class="faq-q"><i class="fa fa-plus faq-t"></i>My Aha Moment</div>
+          <div class="faq-a">
+            {{ article.metafields["global"]["moment"] }}
+          </div>
+        </div>
+        <div class="faq-c">
+          <div class="faq-q"><i class="fa fa-plus faq-t"></i>My Source of Inspiration</div>
+          <div class="faq-a">
+            {{ article.metafields["global"]["source_inspiration"] }}
+          </div>
+        </div>
+        <div class="faq-c">
+          <div class="faq-q"><i class="fa fa-plus faq-t"></i>The Never Settle Attitude</div>
+          <div class="faq-a">
+            {{ article.metafields["global"]["settle_attitude"] }}
+          </div>
+        </div>
+        <div class="faq-c">
+          <div class="faq-q"><i class="fa fa-plus faq-t"></i>Biggest Achievement</div>
+          <div class="faq-a">
+            {{ article.metafields["global"]["biggest_achievement"] }}
+          </div>
+        </div>
+        <div class="faq-c">
+          <div class="faq-q"><i class="fa fa-plus faq-t"></i>The Thing That Keeps Me Going</div>
+          <div class="faq-a">
+            {{ article.metafields["global"]["things_going"] }}
+          </div>
+        </div>
+        <div class="faq-c">
+          <div class="faq-q"><i class="fa fa-plus faq-t"></i>The End Goal</div>
+          <div class="faq-a">
+            {{ article.metafields["global"]["end_goal"] }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="eight columns offset-by-one omega">
       <div class="section clearfix">
       {% if section.settings.blog_breadcrumb %}
           <div class="clearfix breadcrumb">
@@ -82,13 +139,6 @@
             {% endfor %}
           </div>
         {% endif %}
-
-        {% unless article.image and section.settings.banner_image %}
-          <h1 class="article_title {% unless sidebar %}align_center{% endunless %}">{{ article.title }}</h1>
-          {% unless sidebar %}
-            <div class="feature_divider"></div>
-          {% endunless %}
-        {% endunless %}
 
           {% if section.settings.blog_tags and sidebar == false %}
             <div class="blog_meta tags right">
@@ -139,15 +189,7 @@
             </p>
           {% endif %}
 
-          {{ article.content }}
-
           <span class="clear"></span>
-
-          <div class="text-align--right">
-            {% include "social-buttons" with "article" %}
-          </div>
-
-          <br class="clear" />
 
           {% if section.settings.blog_author %}
             <br class="clear" />

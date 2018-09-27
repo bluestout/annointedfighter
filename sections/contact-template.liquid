@@ -1,6 +1,11 @@
 {% if section.settings.banner_image != nil %}
   {% assign feature_image = true %}
 {% endif %}
+{% if section.blocks.size > 0 %}
+  {% assign sidebar = true %}
+{% else %}
+  {% assign sidebar = false %}
+{% endif %}
 
 {% if section.settings.banner_image != nil %}
   <div id="slide-contact" class="parallax-banner featured-image--{{ feature_image }} parallax_effect--{{ section.settings.parallax_effect }}">
@@ -60,70 +65,80 @@
   </div>
 {% endif %}
 
-<div class="container main content main-wrapper">
-  {% if section.settings.banner_image == nil %}
-    <h1 class="center">{{ page.title }}</h1>
-    <div class="feature_divider"></div>
+<div class="container-fluid main content page-main-wrapper">
+  <div class="page-title">
+    <h1>{{ section.settings.banner_title }}</h1>
+    <div class="text-align--center">{{ section.settings.banner_content }}</div>
+  </div>
+
+  {% if sidebar %}
+    {% include 'sidebar' %}
+    <div class="twelve columns page">
+  {% else %}
+    <div class="sixteen columns page">
   {% endif %}
+    <div class="contact_form contact-template_contact_form contact_text_position--{{ section.settings.contact_text_position }} contact_text_alignment--{{ section.settings.contact_text_alignment }}">
+      <div class="sixteen columns">
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <p class="quote">{{ 'contact.form.post_success' | t }}</p>
+          {% endif %}
 
-  <div class="contact_form contact-template_contact_form contact_text_position--{{ section.settings.contact_text_position }} contact_text_alignment--{{ section.settings.contact_text_alignment }}">
-    <div class="{% if section.settings.contact_text_position == 'center' %}
-      eight {% else %} seven {% endif %} columns contact_content">
-      {{ page.content }}
-    </div>
-    <div class="eight columns">
-      {% form 'contact' %}
-        {% if form.posted_successfully? %}
-          <p class="quote">{{ 'contact.form.post_success' | t }}</p>
-        {% endif %}
+          {% if form.errors %}
+            <p class="quote">{{ 'general.forms.post_error' | t }}</p>
 
-        {% if form.errors %}
-          <p class="quote">{{ 'general.forms.post_error' | t }}</p>
+           {% assign message = 'contact.form.message' | t %}
+            <ul class="center">
+              {% for field in form.errors %}
+                {% if field == 'form' %}
+                  <li>
+                    {{ form.errors.messages[field] }}
+                  </li>
+                {% else %}
+                  <li>
+                    {% assign field_name = field | replace: 'body', message %}
+                    {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+                  </li>
+                {% endif %}
+              {% endfor %}
+             </ul>
+          {% endif %}
 
-         {% assign message = 'contact.form.message' | t %}
-          <ul class="center">
-            {% for field in form.errors %}
-              {% if field == 'form' %}
-                <li>
-                  {{ form.errors.messages[field] }}
-                </li>
-              {% else %}
-                <li>
-                  {% assign field_name = field | replace: 'body', message %}
-                  {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
-                </li>
-              {% endif %}
-            {% endfor %}
-           </ul>
-        {% endif %}
-
-         <div class="four columns alpha">
-          {% assign name_attr = 'contact.form.name' | handle %}
-          <label for="contactFormName">{{ 'contact.form.name' | t }} <span class="red">*</span></label>
-          <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
-         </div>
-         <div class="four columns omega">
-          <label for="contactFormEmail">{{ 'contact.form.email' | t }} <span class="red">*</span></label>
-          <input type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
-         </div>
-         {% comment %}
-          {% assign name_attr = 'contact.form.phone' | t | handle %}
-          <label for="contactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
-          <input type="tel" id="contactFormPhone" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
-          {% endcomment %}
-
-        <label for="contactFormMessage">{{ 'contact.form.message' | t }} <span class="red">*</span></label>
-        <textarea rows="5" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}" required="required">{% if form.body %}{{ form.body }}{% endif %}</textarea>
-
-        {{ section.settings.contact_form_text }}
-
-        <input type="submit" class="submit action_button" value="{{ 'contact.form.send' | t }}" />
-      {% endform %}
+           <div class="nine columns alpha">
+            {% assign name_attr = 'contact.form.name' | handle %}
+            <label for="contactFormName">{{ 'contact.form.name' | t }} <span class="red">*</span></label>
+            <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+           </div>
+           <div class="nine columns omega">
+            <label for="contactFormEmail">{{ 'contact.form.email' | t }} <span class="red">*</span></label>
+            <input type="email" id="contactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
+           </div>
+           {% comment %}
+            {% assign name_attr = 'contact.form.phone' | t | handle %}
+            <label for="contactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+            <input type="tel" id="contactFormPhone" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+            {% endcomment %}
+            <div class="nine columns">
+              <label for="contactFormGoals">{{ 'contact.form.goals' | t }}</label>
+              <select id="contactFormGoals" name="contact[goals]">
+                <option value="sports">Sports</option>
+              </select>
+            </div>
+            <div class="nine columns">
+              <label for="contactFormMessage">{{ 'contact.form.message' | t }} <span class="red">*</span></label>
+              <textarea rows="5" id="contactFormMessage" name="contact[body]" required="required">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            </div>
+            <div class="nine columns">
+              {{ section.settings.contact_form_text }}
+            </div>
+            <div class="nine columns">
+              <input type="submit" class="submit action_button full-width" value="{{ 'contact.form.send' | t }}" />
+            </div>
+        {% endform %}
+      </div>
     </div>
   </div>
 </div>
-
-
 
 {% if section.settings.map_address != blank or section.settings.image != blank %}
   <br class="clear" />
@@ -168,7 +183,7 @@
     },
     {
       "type": "richtext",
-      "id": "subtitle",
+      "id": "banner_content",
       "label": "Subheading"
     },
     {
@@ -386,6 +401,63 @@
       "step": 20,
       "default": 400,
       "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_by_collection",
+      "name": "Collection list",
+      "limit": 1
+    },
+    {
+      "type": "filter_by_type",
+      "name": "Type list",
+      "limit": 1
+    },
+    {
+      "type": "filter_by_vendor",
+      "name": "Vendor list",
+      "limit": 1
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "custom_menu_linklist",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Text area can be used for special announcements or general information.</p>"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "settings": [
+        {
+          "type": "page",
+          "id": "content_page",
+          "label": "Page"
+        }
+      ]
     }
   ]
 }

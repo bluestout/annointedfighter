@@ -1,35 +1,40 @@
 <div class="container content" style="padding-top:0">
-  <div class="featured_links">
+  <div class="sixteen columns featured_links">
     <div class="section clearfix feature">
       {% for block in section.blocks %}
-        <div class="feature-item {% if section.settings.featured_promos_per_row == 2 %} {% cycle 'alpha', 'omega' %}{% elsif section.settings.featured_promos_per_row == 3 %} {% cycle 'alpha', '', 'omega' %}{% else %} {% cycle 'alpha', '', '', 'omega' %}{% endif %} {% if section.settings.featured_links_style != blank %}{{ section.settings.featured_links_style }} {% cycle 'delay-025s', 'delay-05s', 'delay-075s', 'delay-1s' %}{% endif %} center">
+        <div class="{% if section.settings.featured_contents_per_row == 2 %}eight columns {% cycle 'alpha', 'omega' %}{% elsif section.settings.featured_contents_per_row == 3 %}one-third column {% cycle 'alpha', '', 'omega' %}{% else %}four columns {% cycle 'alpha', '', '', 'omega' %}{% endif %} {% if section.settings.featured_links_style != blank %}{{ section.settings.featured_links_style }} {% cycle 'delay-025s', 'delay-05s', 'delay-075s', 'delay-1s' %}{% endif %} center">
           {% if block.settings.link != blank %}
             <a href="{{ block.settings.link }}">
           {% endif %}
 
           <div class="{% if section.settings.rounded_image != blank %}rounded{% endif %}">
-            {% if block.settings.image != nil %}
-              <img  src="{{ block.settings.image | img_url: '300x' }}"
-                    alt="{{ block.settings.image.alt }}"
-                    data-src="{{ block.settings.image | img_url: '2048x' }}"
-                    class="lazyload"
-                    data-sizes="auto"
-                    data-srcset=" {{ block.settings.image | img_url: '2048x' }} 2048w,
-                                  {{ block.settings.image | img_url: '1600x' }} 1600w,
-                                  {{ block.settings.image | img_url: '1200x' }} 1200w,
-                                  {{ block.settings.image | img_url: '1000x' }} 1000w,
-                                  {{ block.settings.image | img_url: '800x' }} 800w,
-                                  {{ block.settings.image | img_url: '600x' }} 600w,
-                                  {{ block.settings.image | img_url: '400x' }} 400w"
-                     />
-            {% else %}
-              {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
-              {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
-            {% endif %}
+
           </div>
 
           {% if block.settings.title != blank %}
-            <h2>{{ block.settings.title | escape }}</h2>
+            <h3>
+                {% if block.settings.image != nil %}
+                <img  src="{{ block.settings.image | img_url: '300x' }}"
+                      alt="{{ block.settings.image.alt }}"
+                      data-src="{{ block.settings.image | img_url: '2048x' }}"
+                      class="lazyload"
+                      data-sizes="auto"
+                      data-srcset=" {{ block.settings.image | img_url: '2048x' }} 2048w,
+                                    {{ block.settings.image | img_url: '1600x' }} 1600w,
+                                    {{ block.settings.image | img_url: '1200x' }} 1200w,
+                                    {{ block.settings.image | img_url: '1000x' }} 1000w,
+                                    {{ block.settings.image | img_url: '800x' }} 800w,
+                                    {{ block.settings.image | img_url: '600x' }} 600w,
+                                    {{ block.settings.image | img_url: '400x' }} 400w"
+                       />
+              {% else %}
+                {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
+              {% endif %}
+              <span>
+              {{ block.settings.title | escape }}
+              </span>
+            </h3>
             {% if section.settings.show_divider %}
               <div class="feature_divider"></div>
             {% endif %}
@@ -43,9 +48,9 @@
           {% endif %}
         </div>
 
-        {% if section.settings.featured_promos_per_row == 2 %}
+        {% if section.settings.featured_contents_per_row == 2 %}
           {% cycle '', '<br class="clear " />' %}
-        {% elsif section.settings.featured_promos_per_row == 3 %}
+        {% elsif section.settings.featured_contents_per_row == 3 %}
           {% cycle '', '', '<br class="clear" />' %}
         {% else %}
           {% cycle '', '', '', '<br class="clear" />' %}
@@ -57,14 +62,14 @@
 
 {% schema %}
 {
-  "name": "Featured promotions",
-  "class": "featured-promotions-section",
+  "name": "Featured Content",
+  "class": "featured-content-section",
   "max_blocks": 4,
   "settings": [
     {
       "type": "range",
-      "id": "featured_promos_per_row",
-      "label": "Promotions per row",
+      "id": "featured_contents_per_row",
+      "label": "Content block per row",
       "min": 2,
       "max": 4,
       "step": 1,
@@ -110,12 +115,12 @@
   "blocks": [
     {
       "type": "image",
-      "name": "Promotion",
+      "name": "Content",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image",
+          "label": "Icon",
           "info": "840px wide recommended"
         },
         {
@@ -126,21 +131,19 @@
         {
           "type": "text",
           "id": "title",
-          "label": "Header",
-          "default": "Promotion"
+          "label": "Header"
         },
         {
           "type": "richtext",
           "id": "text",
-          "label": "Text",
-          "default": "<p>This is a featured promotion block, add some text here to talk about your promotion.</p>"
+          "label": "Text"
         }
       ]
     }
   ],
   "presets": [{
-    "name": "Featured promotions",
-    "category": "Image",
+    "name": "Featured contents",
+    "category": "Text",
     "settings": {
     },
     "blocks": [
@@ -149,8 +152,8 @@
         "settings": {
           "image": "",
           "link": "",
-          "title": "Promotion",
-          "text": "<p>This is a featured promotion block, add some text here to talk about your promotion.</p>"
+          "title": "Content",
+          "text": ""
         }
       },
       {
@@ -158,8 +161,8 @@
         "settings": {
           "image": "",
           "link": "",
-          "title": "Promotion",
-          "text": "<p>This is a featured promotion block, add some text here to talk about your promotion.</p>"
+          "title": "Content",
+          "text": ""
         }
       },
       {
@@ -167,8 +170,8 @@
         "settings": {
           "image": "",
           "link": "",
-          "title": "Promotion",
-          "text": "<p>This is a featured promotion block, add some text here to talk about your promotion.</p>"
+          "title": "Content",
+          "text": ""
         }
       }
     ]

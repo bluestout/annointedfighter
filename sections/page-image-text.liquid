@@ -1,8 +1,8 @@
-<div class="container">
-  <div class="sixteen columns">
+<div class="container-fluid">
+  <div class="">
     <div class="homepage_content section clearfix image_with_text image-text--align-{{ section.settings.layout }}">
       {% capture image_layout %}
-        <div class="seven columns image_column {% if section.settings.layout == 'left' %}alpha animate_left{% else %}omega animate_right{% endif %}">
+        <div class="nine columns image_column {% if section.settings.layout == 'left' %}alpha animate_left{% else %}omega animate_right{% endif %}">
           {% if section.settings.image != blank %}
             <img  src="{{ section.settings.image | img_url: '300x' }}"
                   alt="{{ section.settings.image.alt }}"

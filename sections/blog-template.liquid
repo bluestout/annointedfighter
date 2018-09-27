@@ -68,21 +68,17 @@
   </div>
 {% endif %}
 
-<div class="container main content main-wrapper">
+<div class="container-fluid content banner-title">
+  <h1 class="center" style="text-transform: none;">
+    {% if current_tags %}
+      {{ current_tags }}
+    {% else %}
+      {{ blog.title }}
+    {% endif %}
+  </h1>
+</div>
+<div class="container main main-wrapper article--list">
   {% paginate blog.articles by section.settings.blog_posts_per_page %}
-    {% unless section.settings.image %}
-      <div class="sixteen columns">
-        <h1 class="center">
-          {% if current_tags %}
-            <a href="/blogs/{{ blog.handle }}/tagged/{{ current_tags | handleize }}" title="{{ blog.title | escape }}">{{ current_tags }}</a>
-          {% else %}
-            <a href="{{ blog.url }}" title="{{ blog.title | escape }}">{{ blog.title }}</a>
-          {% endif %}
-        </h1>
-        <div class="feature_divider"></div>
-      </div>
-    {% endunless %}
-
     <div class="section clearfix">
       <div class="sixteen columns clearfix breadcrumb">
         <div class="eight columns breadcrumb_text alpha" itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -184,7 +180,20 @@
             </div>
           {% endif %}
 
-          <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+          <div class="article--heading clearfix">
+            <a href="{{ article.url }}" class="article--title">{{ article.title }}</a>
+            {% if article.excerpt != blank %}
+                {% assign postexcerpt = article.excerpt | size %}
+                {% if postexcerpt > 100 %}
+                     {% assign excerptlength = 'lg' %}
+                {% elsif postexcerpt <= 50 %}
+                     {% assign excerptlength = 'sm' %}
+                {% endif %}
+                <div class="excerpt excerpt-length--{{ excerptlength }} {{ postexcerpt }}">
+                  &nbsp; | &nbsp;{{ article.excerpt }}
+                </div>
+            {% endif %}
+          </div>
 
           <p class="blog_meta">
             {% if section.settings.blog_author %}
@@ -208,21 +217,9 @@
             {% endif %}
           </p>
 
-          {% if article.excerpt != blank %}
-              {% assign postexcerpt = article.excerpt | size %}
-              {% if postexcerpt > 100 %}
-                   {% assign excerptlength = 'lg' %}
-              {% elsif postexcerpt <= 50 %}
-                   {% assign excerptlength = 'sm' %}
-              {% endif %}
-              <div class="excerpt excerpt-length--{{ excerptlength }} {{ postexcerpt }}">
-                {{ article.excerpt }}
-                <p class="read-more"></p>
-              </div>
-          {% endif %}
           {% if section.settings.read_more_link %}
             <p>
-              <a href="{{ article.url }}" title="{{ article.title | escape }}">{{ 'blogs.general.continue_reading_html' | t }} <span class="icon-arrow-right"></span></a>
+              <a href="{{ article.url }}" class="read-more--link" title="{{ article.title | escape }}">{{ 'blogs.general.continue_reading_html' | t }} <span class="fa fa-long-arrow-right"></span></a>
             </p>
           {% endif %}
         </div>

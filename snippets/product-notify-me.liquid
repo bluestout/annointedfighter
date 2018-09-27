@@ -1,24 +1,56 @@
-{% if settings.notify_me_form %}  
-  <div class="notify_form notify-form-{{ product.id }}" id="notify-form-{{ product.id }}" {% if product.available %}style="display:none"{% endif %}>
-    {% form 'contact' %}
-      {% if form.posted_successfully? %}
-        <p><em>{{ 'products.notify_form.post_success' | t }}</em></p>
-      {% elsif form.errors %}
-        <p><em>{{ 'products.notify_form.post_error' | t }}</em></p>
-      {% else %}
-        <p>
-          {% if customer %}
-            <input type="hidden" class="notify_email" name="contact[email]" id="contact[email]" value="{{ customer.email }}" />
-          {% else %}
-            <label for="contact[email]">{{ settings.notify_me_description}}</label>
-            <input required type="email" class="notify_email" name="contact[email]" id="contact[email]" placeholder="{{ 'products.notify_form.email' | t }}" value="{{ contact.fields.email }}" />
-          {% endif %}
-          
-          <input type="hidden" name="challenge" value="false" />
-          <input type="hidden" name="contact[body]" class="notify_form_message" data-body="{{ 'products.notify_form.message_content' | t: product: product.title, url: canonical_url }}" value="{{ 'products.notify_form.message_content' | t: product: product.title, url: canonical_url }}" />
-          <input class="action_button" type="submit" value="{{ 'products.notify_form.send' | t }}" style="margin-bottom:0px" />    
-        </p>
-      {% endif %}
-    {% endform %}
+{% if settings.notify_me_form %}
+  {% unless product.available %}
+    <a href="#notify_form--content" class="fancybox action_button out_of_stock btn--large">{{ 'products.notify_form.out_of_stock' | t }}</a>
+  <div class="notify_form notify-form-{{ product.id }}" id="notify-form-{{ product.id }}" {% unless product.available %}style="display:none"{% endunless %}>
+      <div id="notify_form--content">
+      {% form 'contact' %}
+        {% if form.posted_successfully? %}
+          <p><em>{{ 'products.notify_form.post_success' | t }}</em></p>
+        {% elsif form.errors %}
+          <p><em>{{ 'products.notify_form.post_error' | t }}</em></p>
+        {% else %}
+          <p>
+            {% if customer %}
+              <input type="hidden" class="notify_email" name="contact[email]" id="contact[email]" value="{{ customer.email }}" />
+              <div class="product--wrapper">
+                <div class="thumbs">
+                  <img src="{{ product.featured_image.src | img_url: '100x' }}">
+                </div>
+                <div class="description">
+                  {% assign current_variant = product.selected_or_first_available_variant %}
+                  <h5>{{ product.title }}</h5>
+                  <span class="money">{{ current_variant.price | money }}</span>
+                </div>
+              </div>
+            {% else %}
+              <label for="contact[email]"></label>
+              {{ settings.notify_me_description}}
+              <div class="product--wrapper">
+                <div class="thumbs">
+                  <img src="{{ product.featured_image.src | img_url: '100x' }}">
+                </div>
+                <div class="description">
+                  {% assign current_variant = product.selected_or_first_available_variant %}
+                  <h6>{{ product.title }}</h6>
+                  <span class="money">{{ current_variant.price | money }}</span>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="input--wrapper">
+                <label>{{ 'products.notify_form.email' | t }}</label>
+                <input required type="email" class="notify_email" name="contact[email]" id="contact[email]" value="{{ contact.fields.email }}" />
+                <div class="clear"></div>
+              </div>
+            {% endif %}
+
+            <input type="hidden" name="challenge" value="false" />
+            <input type="hidden" name="contact[body]" class="notify_form_message" data-body="{{ 'products.notify_form.message_content' | t: product: product.title, url: canonical_url }}" value="{{ 'products.notify_form.message_content' | t: product: product.title, url: canonical_url }}" />
+            <input class="action_button" type="submit" value="{{ 'products.notify_form.send' | t }}" style="margin-bottom:0px" />
+            <div class="clear"></div>
+          </p>
+        {% endif %}
+      {% endform %}
+    </div>
   </div>
+{% endunless %}  
 {% endif %}

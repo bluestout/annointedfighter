@@ -2,18 +2,22 @@
   <div class="container">
 
     <div class="seven columns">
+      {% if section.settings.footer_heading_left != blank %}
+      {{ section.settings.footer_heading_left }}
+      {% endif %}
+
+      {% if section.settings.footer_content_left != blank %}
+        <h4>{{ section.settings.footer_content_left }}</h4>
+      {% endif %}
+
+    </div>
+
+    <div class="nine columns align_right">
       {% if section.settings.footer_social_icons %}
-        <h6>{{ 'layout.general.social' | t }}</h6>
         <div class="js-social-icons">
           {% include 'social-icons' %}
         </div>
       {% endif %}
-      {% if section.settings.footer_content_left != blank %}
-        {{ section.settings.footer_content_left }}
-      {% endif %}
-    </div>
-
-    <div class="nine columns">
       {% if section.settings.footer_linklist_1 != blank %}
         <ul class="footer_menu">
           {% for link in linklists[section.settings.footer_linklist_1].links %}
@@ -34,8 +38,6 @@
         </ul>
       {% endif %}
 
-
-
       {% if section.settings.footer_newsletter %}
         {% if section.settings.richtext != blank %}
           {{ section.settings.richtext }}
@@ -50,13 +52,11 @@
       {{ section.settings.custom_html }}
 
       <p class="credits">
-        &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}.
+        Copyright &copy; {{ "now" | date: "%Y" }} {{ shop.name | link_to: '/' }}.
         {{ section.settings.copyright_text | escape }}<br />
         {% if section.settings.display_designed_by == true %}
           {{ 'layout.general.designer_credits_html' | t }}
         {% endif %}
-
-        {{ powered_by_link | split: '" ' | join: '?ref=out-of-the-sandbox" ' | split: '">' | join: '?ref=out-of-the-sandbox">' }}
       </p>
 
       {% if section.settings.display_payment_methods %}
@@ -121,7 +121,12 @@
       "content": "Content"
     },
     {
-      "type": "richtext",
+      "type": "text",
+      "id": "footer_heading_left",
+      "label": "Left column heading"
+    },
+    {
+      "type": "html",
       "id": "footer_content_left",
       "label": "Left column text"
     },

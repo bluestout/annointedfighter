@@ -1,0 +1,172 @@
+<div class="content container-fluid banner-title">
+  <h1 class="center" style="text-transform: none;">{{ page.title }}</h1>
+</div>
+<ul class="category_list">
+  {% assign categories = section.settings.categories | split: ',' %}
+  {% for category in categories %}
+  <li>
+    <a href="#">{{ category | escape }}</a>
+  </li>
+  {% endfor %}
+</ul>
+<div class="container main main-wrapper">
+
+  {% comment %}Check to see if sidebar should be enabled{% endcomment %}
+  {% if section.blocks.size > 0 %}
+    {% assign sidebar = true %}
+  {% else %}
+    {% assign sidebar = false %}
+  {% endif %}
+
+  {% if sidebar %}
+    {% include 'sidebar' %}
+    <div class="thirteen columns page">
+      {% for category in categories %}
+        {% unless category == 'View All' %}
+        {% assign has_article = false %}
+        {% for article in blogs.programs.articles %}
+          {% if article.metafields["global"]["program_category"] == category %}
+            {% assign has_article = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% if has_article %}
+          <h1 class="program-category--title text-align--left">{{ category }}</h1>
+          <div class="js-program-slider flexslider" data-category="{{ category }}">
+            <ul class="slides">
+            {% for article in blogs.programs.articles %}
+              {% if article.metafields["global"]["program_category"] == category %}
+                <li class="program-slider--item">
+                  <img src="{{ article.image.src | img_url: '500x' }}">
+                  <h4 class="text-align--left">{{ article.title }}</h4>
+                  <div class="meta-data">
+                    <span>{{ article.metafields["global"]["program_level"] }}</span>
+                    {% if article.metafields["global"]["program_period"] != blank %}
+                    <span>&nbsp;|&nbsp;{{ article.metafields["global"]["program_period"] }}</span>
+                    {% endif %}
+                  </div>
+                  <a href="{{ article.url }}" class="btn-view--plan">View Plan &nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            </ul>
+            <div class="custom-navigation">
+              <a href="javascript:void(0);" class="flex-prev"><i class="fa fa-long-arrow-left"></i></a>
+              <div class="custom-controls-container"></div>
+              <a href="javascript:void(0);" class="flex-next"><i class="fa fa-long-arrow-right"></i></a>
+            </div>
+          </div>
+
+        {% endif %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="sixteen columns page">
+      {{ page.content }}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Programs",
+  "class": "program-template-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Create a sidebar by adding content blocks."
+    },
+    {
+      "type": "checkbox",
+      "id": "toggle",
+      "label": "Toggle sidebar content",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Banner Title"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_content",
+      "label": "Banner content"
+    },
+    {
+      "type": "text",
+      "id": "categories",
+      "label": "Categories for filter",
+      "info": "Separate categories by comma(,)"
+    },
+    {
+      "type": "text",
+      "id": "tag_list",
+      "label": "Tags for filter",
+      "info": "Separate tags by comma(,)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_by_program_type",
+      "name": "Program list",
+      "limit": 1
+    },
+    {
+      "type": "filter_by_collection",
+      "name": "Collection list",
+      "limit": 1
+    },
+    {
+      "type": "filter_by_type",
+      "name": "Type list",
+      "limit": 1
+    },
+    {
+      "type": "filter_by_vendor",
+      "name": "Vendor list",
+      "limit": 1
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "custom_menu_linklist",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Text area can be used for special announcements or general information.</p>"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "settings": [
+        {
+          "type": "page",
+          "id": "content_page",
+          "label": "Page"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

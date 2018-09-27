@@ -13,12 +13,12 @@
 
 {% endcomment %}
 
-{% if paginate.pages > 1 %}  
+{% if paginate.pages > 1 %}
   <div class="{% if pagination %}twelve{% else %}sixteen{% endif %} columns">
-    <div class="section clearfix">    
+    <div class="section clearfix">
       <div class="paginate">
-        {{ paginate | default_pagination }}
-      </div>  
+        {{ paginate | default_pagination: next: '<span class="fa fa-long-arrow-right"></span>', previous: '<span class="fa fa-long-arrow-left"></span>' }}
+      </div>
     </div>
   </div>
 {% endif %}

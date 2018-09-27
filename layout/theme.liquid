@@ -47,6 +47,7 @@
       {{ "customer_area.js"  | shopify_asset_url | script_tag }}
     {% endif %}
 
+    {{ 'vendor.js' | asset_url | script_tag }}
     {{ 'app.js' | asset_url | script_tag }}
 
     <!--[if lte IE 8]>
@@ -138,7 +139,10 @@
       </div>
 
       {% include 'cart-shipping-calculator' %}
+
+      {% unless template contains '404' %}
       {% section 'footer' %}
+      {% endunless %}
 
       <div id="search" class="animated">
         <div class="container">

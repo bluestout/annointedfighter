@@ -1,20 +1,13 @@
-<div class="container social-feeds-wrap">
+<div class="container-fluid social-feeds-wrap">
   <div class="section clearfix homepage_content">
     {% for block in section.blocks %}
       {% if block.type == 'instagram' %}
 
-        <div class="{% if forloop.length > 1 %}eight{% else %}sixteen{% endif %} columns" {{ block.shopify_attributes }}>
+        <div class="{% if forloop.length > 1 %}eight{% else %}sixteen{% endif %}" {{ block.shopify_attributes }}>
           {% if forloop.length == 1 %}
             <h2 class="title">
-              {% if settings.instagram_link != blank %}
-                <a href="{{ settings.instagram_link }}" target="_blank">
-              {% endif %}
               {{ block.settings.instagram_title | escape }}
-              {% if settings.instagram_link != blank %}
-                </a>
-              {% endif %}
             </h2>
-            <div class="feature_divider"></div>
           {% else %}
             <h4 class="title">
               {% if settings.instagram_link != blank %}
@@ -28,11 +21,18 @@
           {% endif %}
 
           {% if block.settings.instagram_client_id != blank %}
-            <div id="instafeed" class="js-instafeed" data-client-id="{{ block.settings.instagram_client_id | strip }}" data-count="{{ block.settings.instagram_count }}"></div>
+            <div id="instafeed" class="js-instafeed flexslider" data-client-id="{{ block.settings.instagram_client_id | strip }}" data-count="{{ block.settings.instagram_count }}">
+              <ul class="slides"></ul>
+            </div>
+            <div class="custom-navigation social-navigation">
+              <a href="javascript:void(0);" class="flex-prev"><i class="fa fa-long-arrow-left"></i></a>
+              <div class="custom-controls-container"></div>
+              <a href="javascript:void(0);" class="flex-next"><i class="fa fa-long-arrow-right"></i></a>
+            </div>
           {% else %}
             <div id="instafeed" class="clearfix placeholder-instagram">
               {% for i in (1..block.settings.instagram_count) %}
-                <div class="four columns">
+                <div class="four">
                   <a href="#">
                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--instagram' }}
                   </a>
@@ -50,7 +50,6 @@
             <h2 class="title">
               <a href="https://twitter.com/{{ block.settings.twitter_username | replace: "@", "" | strip }}" target="_blank">{{block.settings.twitter_title | escape }}</a>
             </h2>
-            <div class="feature_divider"></div>
           {% else %}
             <h4 class="title">
               <a href="https://twitter.com/{{ block.settings.twitter_username | replace: "@", "" | strip }}" target="_blank">{{block.settings.twitter_title | escape }}</a>

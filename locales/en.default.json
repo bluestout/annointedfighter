@@ -8,9 +8,10 @@
       "page": "Page {{ page_number }}"
     },
     "404": {
-      "title": "Page Not Found",
-      "subtext": "We're sorry, but the page you requested could not be found.",
-      "continue_shopping_html": "Try searching or <a href=\"\/collections\/all\">continue shopping &rarr;<\/a>"
+      "title": "404",
+      "subtext": "We are sorry we are unable to locate this page.",
+      "continue_shopping_html": "Try searching or <a href=\"\/collections\/all\">continue shopping &rarr;<\/a>",
+      "back_btn_text": "Back to the homepage"
     },
     "password_page": {
       "opening_soon": "Opening Soon",
@@ -37,15 +38,15 @@
       "subscriber_first_name": "First name",
       "subscriber_last_name": "Last name",
       "success_text": "Thank you for joining our mailing list!",
-      "placeholder": "Email address",
-      "submit": "Sign Up"
+      "placeholder": "YOUR EMAIL",
+      "submit": "Submit"
     },
     "breadcrumbs": {
       "home": "Home",
       "page": "Page {{ current_page }} of {{ pages }}"
     },
     "search": {
-      "title": "Search",
+      "title": "Your search results for {{ terms }} ({{ count }})",
       "description": "Search for anything in our shop",
       "no_results_html": "Your search for \"{{ terms }}\" did not match any results.",
       "advanced_search_html": "Advanced Search &#8594;",
@@ -62,7 +63,7 @@
   },
   "blogs": {
     "general": {
-      "continue_reading_html": "Read More",
+      "continue_reading_html": "Learn More",
       "tagged": "tagged",
       "view_all": "All Categories"
     },
@@ -123,10 +124,11 @@
       "view_product_details_html": "View full product details"
     },
     "sidebar": {
-      "collections": "Collections",
+      "collections": "Filter by",
       "product_types": "Types",
       "vendors": "Vendors",
-      "tags": "Tags"
+      "tags": "Filter by Tag",
+      "clear_filter": "Clear filter"
     },
     "sorting": {
       "title": "Sort by",
@@ -152,11 +154,11 @@
     "product": {
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
-      "quantity": "Qty",
-      "add_to_cart": "Add to Cart",
+      "quantity": "Quantity",
+      "add_to_cart": "Add to cart",
       "add_to_cart_success": "Added",
       "vendor": "Vendor",
-      "related_items": "Related Items",
+      "related_items": "Other products you might like",
       "collections": "Collections",
       "product_types": "Type",
       "tags": "Category",
@@ -165,24 +167,27 @@
       "items_left_count": {
         "one": "item left",
         "other": "items left"
-      }
+      },
+      "shipping_banner": "Free shipping over $100"
     },
     "notify_form": {
       "description": "Notify me when this product is available",
-      "email": "Email address",
-      "send": "Send",
+      "email": "Your email address",
+      "send": "Submit",
       "message_content": "Please notify me when {{ product }} becomes available - {{ url }}",
       "post_success": "Thanks! We will notify you when this product becomes available!",
-      "post_error": "Please provide a valid email address."
+      "post_error": "Please provide a valid email address.",
+      "out_of_stock": "Out of stock"
     }
   },
   "contact": {
     "form": {
       "name": "Name",
-      "email": "Email",
+      "email": "Email Address",
       "phone": "Phone Number",
       "message": "Message",
-      "send": "Send",
+      "goals": "What are your Fitness Goals",
+      "send": "Submit",
       "post_success": "Thanks for contacting us. We'll get back to you as soon as possible."
     }
   },
@@ -235,18 +240,18 @@
       "or": "or"
     },
     "login": {
-      "title": "Customer Login",
+      "title": "Sign in / Create Account",
       "returning_customers": "Returning Customers",
       "new_customers": "New Customers",
-      "forgot_password": "Forgot your password?",
-      "sign_up_html": "Sign up &rarr;",
-      "new_customer_label": "New Customer?",
+      "forgot_password": "Forgot password",
+      "sign_up_html": "Create Account",
+      "new_customer_label": "New Customer to Anointed Nutrition. Join now.",
       "sign_in": "Sign In",
       "cancel": "Return to Store",
       "guest_title_html": "Continue as a Guest &rarr;",
       "first_name": "First name",
       "last_name": "Last name",
-      "email": "Email",
+      "email": "Email Address",
       "password": "Password",
       "guest_continue": "Continue",
       "or": "or"
@@ -340,7 +345,7 @@
       "item": "Item",
       "uploaded_file": "uploaded file",
       "continue_browsing_html": "There are no items in your cart. <a href=\"\/collections\/all\">Continue Shopping &rarr;<\/a>",
-      "continue_shopping_link_html": "Continue Shopping &rarr;",
+      "continue_shopping_link_html": "Keep Shopping <i class='fa fa-long-arrow-right'></i>",
       "excluding_tax_shipping": "Excluding tax & shipping",
       "orders_processed_in_currency_html": "Orders will be processed in {{ currency }}.",
       "note": "Order Notes",
@@ -348,7 +353,8 @@
       "or": "or",
       "subtotal": "Subtotal",
       "update": "Update Subtotal",
-      "checkout": "Checkout"
+      "checkout": "Checkout",
+      "shipping_text": "Free shipping on all orders above $100 + easy returns and money back guarantee"
     },
     "shipping_calculator": {
       "estimated_shipping": "estimated shipping",
@@ -373,7 +379,7 @@
       "continue_shopping": "Continue",
       "empty_cart": "Your Cart is Empty",
       "cart_note": "Order Notes",
-      "subtotal": "Subtotal",
+      "subtotal": "Estimated total",
       "pick_a_currency": "Pick a currency",
       "social": "Follow",
       "close_window": "Close",

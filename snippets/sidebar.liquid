@@ -1,5 +1,5 @@
 {% if section.blocks.size > 0 %}
-  <div class="sidebar four columns toggle-all--{{ section.settings.toggle }}">
+  <div class="sidebar three columns toggle-all--{{ section.settings.toggle }}">
     {% for block in section.blocks %}
       <div {{ block.shopify_attributes }}>
         {% if block.type == 'menu' %}
@@ -59,7 +59,7 @@
 
         {% elsif block.type == 'filter_by_tag' %}
           {% assign tag_count = collection.all_tags | size %}
-            <h4 class="toggle" aria-haspopup="true" aria-expanded="false"><span>+</span>{{ 'collections.sidebar.tags' | t }}</h4>
+            <h6 class="toggle" aria-haspopup="true" aria-expanded="false"><span>+</span>{{ 'collections.sidebar.tags' | t }}</h6>
             {% if tag_count > 0 %}
               <ul class="blog_list toggle_list">
                 <li>
@@ -86,14 +86,30 @@
           </ul>
 
         {% elsif block.type == 'filter_by_collection' %}
-          <h4 class="toggle" aria-haspopup="true" aria-expanded="false"><span>+</span>{{ 'collections.sidebar.collections' | t }}</h4>
+          <h6 class="toggle" aria-haspopup="true" aria-expanded="false"><span>+</span>{{ 'collections.sidebar.collections' | t }} &nbsp;&nbsp;<i class="fa fa-long-arrow-down"></i></h6>
+          {% unless collection.handle == 'all' %}
+          <a href="/collections/all" class="clear--filter">{{ 'collections.sidebar.clear_filter' | t }}</a>
+          {% endunless %}
           <ul class="blog_list toggle_list">
             {% for col in collections %}
-              {% unless col.handle == 'frontpage' %}
-                <li {% if col.handle == collection.handle %}class="active"{% endif %}><a href="{{ col.url }}" title="{{ col.title | escape }}">{{ col.title }}</a></li>
+              {% unless col.handle == 'frontpage' or col.handle == 'all' %}
+                <li {% if col.handle == collection.handle %}class="active"{% endif %}>
+                  <a href="{{ col.url }}" title="{{ col.title | escape }}"><input type="checkbox" class="filter_check_box" {% if col.handle == collection.handle %}checked="checked"{% endif %}><span>{{ col.title }}</span></a>
+                </li>
               {% endunless %}
             {% endfor %}
           </ul>
+
+        {% elsif block.type == 'filter_by_program_type' %}
+        <h6 class="toggle" aria-haspopup="true" aria-expanded="false">{{ 'collections.sidebar.collections' | t }} &nbsp;&nbsp;<i class="fa fa-long-arrow-down"></i></h6>
+        <ul class="blog_list toggle_list">
+          {% assign filters = section.settings.tag_list | split: ',' %}
+          {% for tag in filters %}
+            <li class="{% if current_tags contains tag %}active{% endif %}">
+              <a href="/blogs/programs/tagged/{{tag}}"><input type="checkbox" class="filter_check_box"><span>{{ tag | escape }}</span></a>
+            </li>
+          {% endfor %}
+        </ul>
 
         {% elsif block.type == 'filter_by_vendor' %}
           <h4 class="toggle" aria-haspopup="true" aria-expanded="false"><span>+</span>{{ 'collections.sidebar.vendors' | t }}</h4>
@@ -107,6 +123,19 @@
           <h4 class="toggle" aria-haspopup="true" aria-expanded="false"><span>+</span>{{ block.settings.title | escape }}</h4>
           <ul class="blog_list toggle_list content_block">
             <li>{{ block.settings.text }}</li>
+          </ul>
+        {% elsif block.type == 'sort' %}
+          <h6 class="toggle" aria-haspopup="true" aria-expanded="false"><span>+</span>{{ 'collections.sorting.title' | t }} &nbsp;&nbsp;<i class="fa fa-long-arrow-up"></i></h6>
+          <ul class="blog_list toggle_list sort_list">
+            <li>
+              <a href="javascript:void(0);" {% if collection.sort_by == 'created-descending' %}class="active"{% endif %} data-value="created-descending">{{ 'collections.sorting.date_descending' | t }}</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" {% if collection.sort_by == 'price-ascending' %}class="active"{% endif %} data-value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</a>
+            </li>
+            <li>
+              <a href="javascript:void(0);" {% if collection.sort_by == 'price-descending' %}class="active"{% endif %} data-value="price-descending">{{ 'collections.sorting.price_descending' | t }}</a>
+            </li>
           </ul>
         {% endif %}
       </div>

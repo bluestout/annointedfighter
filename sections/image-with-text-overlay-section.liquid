@@ -1,4 +1,4 @@
-<section class="parallax-banner parallax-slide slide parallax_effect--{{ section.settings.parallax_effect }}" id="slide-{{ section.id }}">
+<section class="parallax-banner parallax-slide slide parallax_effect--{{ section.settings.parallax_effect }} {% if section.settings.vertical_alignment == 'bottom' %}vertical--bottom{% endif %}" id="slide-{{ section.id }}">
   <div  class="lazyload bcg {% if section.settings.image == nil %}bcg-placeholder{% endif %}"
       {% if section.settings.parallax_effect %}
         {% if section.settings.image != nil %}
@@ -114,6 +114,22 @@
       "id": "image",
       "label": "Image",
       "info": "1600 x 1000px recommended"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        {
+          "value": "middle",
+          "label": "Middle"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "middle"
     },
     {
       "type": "select",

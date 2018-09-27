@@ -338,7 +338,6 @@
             "display_sku": true,
             "display_social_buttons": true,
             "display_collections": true,
-            "display_related_products": true,
             "product_description_position": "top",
             "product_images_position": "left",
             "set_product_height": false,
@@ -830,7 +829,6 @@
             "display_sku": true,
             "display_social_buttons": true,
             "display_collections": true,
-            "display_related_products": true,
             "product_description_position": "top",
             "product_images_position": "left",
             "set_product_height": false,
@@ -1311,7 +1309,6 @@
             "display_sku": true,
             "display_social_buttons": true,
             "display_collections": true,
-            "display_related_products": true,
             "product_description_position": "top",
             "product_images_position": "left",
             "set_product_height": false,
@@ -1734,7 +1731,6 @@
             "display_sku": true,
             "display_social_buttons": true,
             "display_collections": true,
-            "display_related_products": true,
             "product_description_position": "top",
             "product_images_position": "left",
             "set_product_height": false,
@@ -1884,24 +1880,24 @@
   },
   "current": {
     "logo_color": "#ffffff",
-    "regular_color": "#363636",
+    "regular_color": "#000000",
     "banner_color": "#000000",
-    "headline_color": "#363636",
+    "headline_color": "#000000",
     "headline_border_color": "#363636",
-    "headline_footer_text_color": "#7f8c8d",
-    "sub_footer_text_color": "#6b6b6b",
-    "sale_color": "#ff5a5f",
-    "was_price_color": "#363636",
-    "shop_home_page_content_text_color": "#363636",
+    "headline_footer_text_color": "#ffffff",
+    "sub_footer_text_color": "#ffffff",
+    "sale_color": "#d80916",
+    "was_price_color": "#d80916",
+    "shop_home_page_content_text_color": "#000000",
     "newsletter_popup_color": "#363636",
     "nav_color": "#000000",
     "nav_color_home": "#000000",
-    "nav_color_hover": "#808080",
-    "link_color": "#007a87",
-    "link_hover_color": "#009aab",
-    "sidebar_nav_color": "#363636",
-    "sidebar_nav_color_hover": "#7f8c8d",
-    "sub_footer_link_color": "#7f8c8d",
+    "nav_color_hover": "#000000",
+    "link_color": "#0096dc",
+    "link_hover_color": "#38bdfc",
+    "sidebar_nav_color": "#000000",
+    "sidebar_nav_color_hover": "#565656",
+    "sub_footer_link_color": "#ffffff",
     "sub_footer_link_color_hover": "#ffffff",
     "btn_color": "#000000",
     "btn_hover_color": "#565656",
@@ -1910,8 +1906,8 @@
     "table_styles_enabled": true,
     "border_color": "#b8c6c6",
     "sub_footer_border_color": "#1b1f23",
-    "sale_banner_color": "#ffb400",
-    "new_banner_color": "#ffb400",
+    "sale_banner_color": "#d80916",
+    "new_banner_color": "#000000",
     "quick_shop_color": "#363636",
     "shop_bg_color": "#ffffff",
     "custom_bg": "",
@@ -1924,16 +1920,16 @@
     "transparent_header": true,
     "shop_home_page_content_bg_color": "#ffffff",
     "banner_background_color": "#363636",
-    "sub_footer_color": "#1b1f23",
+    "sub_footer_color": "#0096dc",
     "custom_footer": "",
     "footer_repeat_bg": "repeat",
     "footer_bg_stretched": false,
     "newsletter_popup_background_color": "#ffffff",
     "newsletter_bg": "",
     "newsletter_bg_stretched": false,
-    "mobile_menu_color": "black",
+    "mobile_menu_color": "white",
     "password_page_text_color": "#ffffff",
-    "password_page_background_color": "#000000",
+    "password_page_background_color": "#0096dc",
     "logo__font": "libre_franklin_n4",
     "logo_font_style": "none",
     "logo_font_size": 18,
@@ -1941,11 +1937,11 @@
     "headline_font_style": "none",
     "headline_border": "wide",
     "headline_font_size": 26,
-    "headline_letter_spacing": 3,
+    "headline_letter_spacing": 0,
     "nav__font": "libre_franklin_n4",
-    "nav_font_style": "none",
-    "nav_font_size": 12,
-    "nav_letter_spacing": 2,
+    "nav_font_style": "uppercase",
+    "nav_font_size": 15,
+    "nav_letter_spacing": 0,
     "button_font_style": "none",
     "button_font_size": 16,
     "regular__font": "libre_franklin_n4",
@@ -1967,28 +1963,28 @@
     "display_vendor_collection": false,
     "sale_banner_enabled": true,
     "collection_swatches": true,
-    "display_product_quantity": false,
+    "display_product_quantity": true,
     "limit_quantity": false,
     "display_inventory_left": false,
     "notify_me_form": true,
     "notify_me_description": "<p>Notify me when this product is available:<\/p>",
-    "product_form_style": "dropdown",
+    "product_form_style": "swatches",
     "free_price_text": "Free",
     "size_chart": "",
     "product_slideshow_animation": "slide",
     "slideshow_speed": 6,
     "thumbnail_position": "bottom-thumbnails",
-    "quick_shop_enabled": true,
+    "quick_shop_enabled": false,
     "product_description_position": "top",
     "description_words": "25",
     "show_payment_button": false,
-    "enable_shopify_review_comments": false,
+    "enable_shopify_review_comments": true,
     "review_position": "bottom",
-    "enable_shopify_collection_badges": false,
-    "enable_shopify_product_badges": false,
+    "enable_shopify_collection_badges": true,
+    "enable_shopify_product_badges": true,
     "cart_action": "ajax",
     "side_cart_position": "right",
-    "display_view_cart": true,
+    "display_view_cart": false,
     "display_special_instructions": false,
     "display_tos_checkbox": false,
     "tos_richtext": "<p>I Agree with the Terms & Conditions<\/p>",
@@ -2006,14 +2002,14 @@
     "newsletter_popup_max_width": 600,
     "display_first_name": false,
     "display_last_name": false,
-    "twitter_link": "",
-    "facebook_link": "",
+    "twitter_link": "https:\/\/twitter.com\/",
+    "facebook_link": "https:\/\/facebook.com\/",
     "google_link": "",
-    "youtube_link": "",
+    "youtube_link": "https:\/\/youtube.com\/",
     "vimeo_link": "",
     "pinterest_link": "",
     "tumblr_link": "",
-    "instagram_link": "",
+    "instagram_link": "https:\/\/instagram.com\/",
     "snapchat_link": "",
     "houzz_link": "",
     "linkedin_link": "",
@@ -2025,6 +2021,7 @@
     "supported_currencies": "USD CAD AUD GBP EUR JPY",
     "default_currency": "USD",
     "search_option": "products",
+    "account_login_banner": "shopify:\/\/shop_images\/unnamed_42836524-5ee6-41ec-8e21-f4e7bbe9cc0c.jpg",
     "favicon": "shopify:\/\/shop_images\/FAVICON.png",
     "slideshow_images_crop": false,
     "checkout_header_image": "",
@@ -2266,17 +2263,15 @@
       "product-template": {
         "type": "product-template",
         "settings": {
-          "product_breadcrumb": true,
-          "display_tags": true,
-          "display_type": true,
-          "display_vendor": true,
-          "display_sku": true,
+          "product_breadcrumb": false,
+          "display_tags": false,
+          "display_type": false,
+          "display_vendor": false,
+          "display_sku": false,
           "show_payment_button": false,
-          "display_social_buttons": true,
-          "display_collections": true,
-          "display_related_products": true,
-          "products_per_row": 3,
-          "product_description_position": "top",
+          "display_social_buttons": false,
+          "display_collections": false,
+          "product_description_position": "bottom",
           "product_images_position": "left",
           "set_product_height": false,
           "product_height": 500,
@@ -2286,14 +2281,15 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "footer_linklist_1": "",
+          "footer_linklist_1": "footer-menu",
           "richtext": "<p>Sign up to get the latest on sales, new releases and more…<\/p>",
-          "footer_newsletter": true,
+          "footer_newsletter": false,
           "footer_social_icons": true,
           "copyright_text": "",
           "display_designed_by": false,
-          "display_payment_methods": true,
-          "footer_content_left": "",
+          "display_payment_methods": false,
+          "footer_heading_left": "Have a question",
+          "footer_content_left": "Email: info@AnointedFighterNutrition.com\n<br><br>\nPhone: (855) 281-7772\n<br><br>\nOne Vision Inc<br>\nAddress: #3 17th Ave S.<br>\nNampa, Idaho 83651 USA",
           "footer_content_right": "",
           "custom_html": ""
         }
@@ -2301,20 +2297,20 @@
       "header": {
         "type": "header",
         "settings": {
-          "fixed_header": true,
-          "content_top_padding": 120,
-          "show_announcement": false,
-          "promo_home_page": true,
-          "promo_text": "",
+          "fixed_header": false,
+          "content_top_padding": 70,
+          "show_announcement": true,
+          "promo_home_page": false,
+          "promo_text": "Free shipping on all orders above $100 + easy returns and money back gurantee",
           "announcement_link": "",
-          "announcement_bg_color": "#1b1f23",
-          "announcement_text_color": "#6b6b6b",
+          "announcement_bg_color": "#0096dc",
+          "announcement_text_color": "#ffffff",
           "logo": "shopify:\/\/shop_images\/LOGO_3095e18c-561d-4413-9a68-46e8504f5a94.png",
           "logo_home": "",
           "logo_mobile": "",
           "logo_width": 205,
-          "logo_top_padding": 5,
-          "main_linklist": "main-menu",
+          "logo_top_padding": 0,
+          "main_linklist": "main-menu-staging",
           "dropdown_column_links": 10,
           "dropdown_position": "below_header",
           "menu_alignment": "center",
@@ -2326,6 +2322,7 @@
         "type": "image-with-text-overlay-section",
         "settings": {
           "image": "shopify:\/\/shop_images\/jason-briscoe-223974-unsplash.jpg",
+          "vertical_alignment": "middle",
           "headline_animation": "animate_down",
           "title": "The #1 Faith Based Supplement in the World",
           "subtitle": "<p>We are on a mission to help you have a Healthy Body both Spiritually and Physically by offering the most innovative and trustworthy health and fitness products.<\/p>",
@@ -2334,66 +2331,24 @@
           "button_label": "Shop Supplements",
           "link": "shopify:\/\/collections\/all",
           "homepage_arrow": false,
-          "parallax_effect": true,
+          "parallax_effect": false,
           "parallax_image_height": 600
-        }
-      },
-      "1482978216893": {
-        "type": "featured-promotions",
-        "blocks": {
-          "1482978216893-0": {
-            "type": "image",
-            "settings": {
-              "image": "",
-              "link": "",
-              "title": "Promotion",
-              "text": "<p>This is a featured promotion block, add some text here to talk about your promotion.<\/p>"
-            }
-          },
-          "1482978216893-1": {
-            "type": "image",
-            "settings": {
-              "image": "",
-              "link": "",
-              "title": "Promotion",
-              "text": "<p>This is a featured promotion block, add some text here to talk about your promotion.<\/p>"
-            }
-          },
-          "1482978216893-2": {
-            "type": "image",
-            "settings": {
-              "image": "",
-              "link": "",
-              "title": "Promotion",
-              "text": "<p>This is a featured promotion block, add some text here to talk about your promotion.<\/p>"
-            }
-          }
-        },
-        "block_order": [
-          "1482978216893-0",
-          "1482978216893-1",
-          "1482978216893-2"
-        ],
-        "settings": {
-          "featured_promos_per_row": 3,
-          "featured_links_style": "animate_down",
-          "rounded_image": true,
-          "show_divider": true
         }
       },
       "1482978233631": {
         "type": "image-with-text-overlay-section",
         "settings": {
-          "image": "",
+          "image": "shopify:\/\/shop_images\/updated-image.jpg",
+          "vertical_alignment": "bottom",
           "headline_animation": "animate_down",
-          "title": "Your headline here",
-          "subtitle": "<p>This is a short subheading for your banner image<\/p>",
-          "text_position": "center",
-          "text_alignment": "center",
-          "button_label": "",
-          "link": "",
+          "title": "",
+          "subtitle": "<p>Order your Summer training supplements.<\/p>",
+          "text_position": "right",
+          "text_alignment": "right",
+          "button_label": "Shop Supplements",
+          "link": "#",
           "homepage_arrow": false,
-          "parallax_effect": true,
+          "parallax_effect": false,
           "parallax_image_height": 600
         }
       },
@@ -2401,45 +2356,795 @@
         "type": "featured-text",
         "settings": {
           "image": "",
-          "title": "Talk about your brand",
-          "show_divider": true,
-          "content": "<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
-          "text_size": "featured_text",
+          "title": "Feel & Perform Your Best",
+          "show_divider": false,
+          "content": "<p>You will know exactly what you are taking and what is going into your body. We have nothing <br>to hide and everything to show as we are using the top of the line ingredients.<\/p>",
+          "text_size": "regular_text",
           "text_alignment": "center",
           "button_label": "",
           "button_link": ""
         }
       },
-      "1482978263392": {
-        "type": "featured-collection",
+      "page-program-template": {
+        "type": "page-program-template",
+        "blocks": {
+          "1538077814723": {
+            "type": "filter_by_program_type",
+            "settings": {
+            }
+          }
+        },
+        "block_order": [
+          "1538077814723"
+        ],
         "settings": {
-          "title": "Featured collection",
-          "frontpage_collection": "",
-          "frontpage_products_per_row": 4,
-          "frontpage_products_limit": 12
+          "toggle": false,
+          "banner_title": "",
+          "banner_content": "",
+          "categories": "View All,Workout Plans,Diet\/Nutrition",
+          "tag_list": "Beginner,Intermediate,Advanced,Men,Women"
         }
       },
-      "1482978288287": {
-        "type": "featured-blog",
+      "logo-bar": {
+        "type": "logo-bar",
+        "blocks": {
+          "1538075165498": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ok-mag-logo.png",
+              "link": ""
+            }
+          },
+          "1538075172196": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/fitnesslogo.png",
+              "link": ""
+            }
+          },
+          "1538075179313": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SHAPE-Logo-1.png",
+              "link": ""
+            }
+          },
+          "1538075185140": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/us_weekly_logo.png",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1538075165498",
+          "1538075172196",
+          "1538075179313",
+          "1538075185140"
+        ],
         "settings": {
-          "title": "Blog posts",
-          "blog_widget_select": "",
-          "home_page_articles": 3,
+          "title": "Look who's talking about us"
+        }
+      },
+      "social-feeds": {
+        "type": "social-feeds",
+        "blocks": {
+          "1538075199274": {
+            "type": "instagram",
+            "settings": {
+              "instagram_client_id": "6405658557.1677ed0.51397a60e3744e7783fc0005ded3b933",
+              "instagram_title": "@anointedfighternutrition",
+              "instagram_count": 12
+            }
+          }
+        },
+        "block_order": [
+          "1538075199274"
+        ],
+        "settings": {
+        }
+      },
+      "featured-promotions": {
+        "type": "featured-promotions",
+        "blocks": {
+          "1538075243933": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/money_back_gurantee.png",
+              "link": "",
+              "title": "",
+              "text": "<p>Money back guarantee<\/p>"
+            }
+          },
+          "1538075262658": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/made_in_the_USA.png",
+              "link": "",
+              "title": "",
+              "text": "<p>Made in the USA<\/p>"
+            }
+          },
+          "1538075275044": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/faith_based.png",
+              "link": "",
+              "title": "",
+              "text": "<p>Faith based<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1538075243933",
+          "1538075262658",
+          "1538075275044"
+        ],
+        "settings": {
+          "featured_promos_per_row": 3,
+          "featured_links_style": "",
+          "rounded_image": false,
+          "show_divider": false
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "title": "Join the team",
+          "subheading": "Sign up for early access, and free shiping above $100 + easy returns  and money back guarantee.",
+          "newsletter_richtext": "",
+          "frontpage_text_align": "left",
+          "wide_display": true,
+          "show_first_name": false,
+          "show_last_name": false,
+          "newsletter_background": "#f6f6f6",
+          "newsletter_text": "#000000"
+        }
+      },
+      "1538072460410": {
+        "type": "content-with-icon",
+        "blocks": {
+          "1538072460410-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ingredients.png",
+              "link": "",
+              "title": "Better Ingredients",
+              "text": "<p>It has survived not only five centuries, <br>the leap into electronic typesetting.<\/p>"
+            }
+          },
+          "1538072460410-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/mind.png",
+              "link": "",
+              "title": "Healthy mind",
+              "text": "<p>It has survived not only five centuries, <br>the leap into electronic typesetting.<\/p>"
+            }
+          },
+          "1538072460410-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/body.png",
+              "link": "",
+              "title": "Healthy body",
+              "text": "<p>It has survived not only five centuries, <br>the leap into electronic typesetting.<\/p>"
+            }
+          },
+          "1538072564891": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/natural.png",
+              "link": "",
+              "title": "Natural",
+              "text": "<p>It has survived not only five centuries, <br>the leap into electronic typesetting.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1538072460410-0",
+          "1538072460410-1",
+          "1538072460410-2",
+          "1538072564891"
+        ],
+        "settings": {
+          "featured_contents_per_row": 4,
+          "featured_links_style": "animate_down",
+          "rounded_image": false,
+          "show_divider": false
+        }
+      },
+      "1538072669116": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "Our best sellers",
+          "frontpage_collection": "all",
+          "frontpage_products_per_row": 4,
+          "frontpage_products_limit": 8
+        }
+      },
+      "1538073088152": {
+        "type": "content-grid",
+        "blocks": {
+          "1538073088152-0": {
+            "type": "box",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Group.jpg",
+              "link": "#",
+              "button_label": "Shop stacks",
+              "title": "Pick the right stack for your needs",
+              "text_position": "left",
+              "text_alignment": "left"
+            }
+          },
+          "1538073088152-1": {
+            "type": "box",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/unnamed.jpg",
+              "link": "#",
+              "button_label": "Shop apparel",
+              "title": "Great weather feels even better with the right clothing",
+              "text_position": "right",
+              "text_alignment": "right"
+            }
+          }
+        },
+        "block_order": [
+          "1538073088152-0",
+          "1538073088152-1"
+        ],
+        "settings": {
+          "featured_boxes_per_row": 2,
+          "featured_links_style": "animate_down",
+          "show_divider": false
+        }
+      },
+      "1538073289578": {
+        "type": "content-gallery",
+        "blocks": {
+          "1538073289578-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/eating_guide.png",
+              "text": "<p>All our eating guides<\/p>"
+            }
+          },
+          "1538073289578-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/workout.png",
+              "text": "<p>All our workouts<\/p>"
+            }
+          },
+          "1538073289578-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/video.png",
+              "text": "<p>All our Videos, etc<\/p>"
+            }
+          },
+          "1538073289578-3": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/discount.png",
+              "text": "<p>20% OFF all supplement products<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1538073289578-0",
+          "1538073289578-1",
+          "1538073289578-2",
+          "1538073289578-3"
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Group_2.png",
+          "layout": "left",
+          "title": "Heard about our exclusive membership?",
+          "sub_title": "For $14 you get access to:",
+          "text_alignment": "left",
+          "button_label": "Sign up now",
+          "button_link": "#"
+        }
+      },
+      "1538073634383": {
+        "type": "image-text",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Anointed-Fighter-1_800x_3a368936-1c43-4166-9168-9e4263c09363.png",
+          "layout": "left",
+          "title": "Our Story",
+          "text": "<p>Anointed Fighter Nutrition was founded by Prayer and wanting to make a difference. We have a mission to help you have a Healthy Body both Spiritually and Physically. We are made up of Pastors, Leaders, and Athletes that want to help change lives and be VICTORIOUS! We want to create the most Innovative and Trustworthy Health and Fitness Products on the market. Anointed Fighter is not the typically everyday product that you have seen over the last 25 years from everyone else. We grew tired of the so called \"Top notch formulas\" and refused to sit on the sidelines any longer and decided <br>to do something about it. We have been working with the Factory, Athletes and Formulators to create the Top of the line formulas and not cut any corners to give you ultimate results.<\/p>",
+          "text_alignment": "left",
+          "button_label": "Read more about us",
+          "button_link": "#"
+        }
+      },
+      "1538073710653": {
+        "type": "gallery",
+        "blocks": {
+          "1538073710653-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2018-06-14_at_12.25.12_PM_Copy.png"
+            }
+          },
+          "1538073710653-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2018-06-14_at_12.25.50_PM_Copy.png"
+            }
+          },
+          "1538073710653-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/sheila_large_copy.png"
+            }
+          },
+          "1538073710653-3": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2018-06-14_at_12.28.55_PM_Copy.png"
+            }
+          },
+          "1538073710653-4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2018-06-18_at_9.20.31_AM.png"
+            }
+          },
+          "1538073710653-5": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2018-06-18_at_9.16.50_AM.png"
+            }
+          }
+        },
+        "block_order": [
+          "1538073710653-0",
+          "1538073710653-1",
+          "1538073710653-2",
+          "1538073710653-3",
+          "1538073710653-4",
+          "1538073710653-5"
+        ],
+        "settings": {
+          "title": "Meet our Athletes",
+          "select_layout": false,
+          "grid-size": 6,
+          "text": "<p>Lorem Ipsum is simply dummy text of the printing Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.<\/p>",
+          "button_label": "Read their stories",
+          "button_link": "#"
+        }
+      },
+      "1538073917539": {
+        "type": "logo-bar",
+        "blocks": {
+          "1538073917539-0": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ok-mag-logo.png",
+              "link": ""
+            }
+          },
+          "1538073917539-1": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/fitnesslogo.png",
+              "link": ""
+            }
+          },
+          "1538073917539-2": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SHAPE-Logo-1.png",
+              "link": ""
+            }
+          },
+          "1538073917539-3": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/us_weekly_logo.png",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1538073917539-0",
+          "1538073917539-1",
+          "1538073917539-2",
+          "1538073917539-3"
+        ],
+        "settings": {
+          "title": "Look who's talking about us"
+        }
+      },
+      "1538073983112": {
+        "type": "social-feeds",
+        "blocks": {
+          "1538073983112-1": {
+            "type": "instagram",
+            "settings": {
+              "instagram_client_id": "6405658557.1677ed0.51397a60e3744e7783fc0005ded3b933",
+              "instagram_title": "@anointedfighternutrition",
+              "instagram_count": 12
+            }
+          }
+        },
+        "block_order": [
+          "1538073983112-1"
+        ],
+        "settings": {
+        }
+      },
+      "1538074085596": {
+        "type": "featured-promotions",
+        "blocks": {
+          "1538074085596-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/money_back_gurantee.png",
+              "link": "",
+              "title": "",
+              "text": "<p>Money back guarantee<\/p>"
+            }
+          },
+          "1538074085596-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/made_in_the_USA.png",
+              "link": "",
+              "title": "",
+              "text": "<p>Made in the USA<\/p>"
+            }
+          },
+          "1538074085596-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/faith_based.png",
+              "link": "",
+              "title": "",
+              "text": "<p>Faith based<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1538074085596-0",
+          "1538074085596-1",
+          "1538074085596-2"
+        ],
+        "settings": {
+          "featured_promos_per_row": 3,
+          "featured_links_style": "animate_down",
+          "rounded_image": true,
+          "show_divider": false
+        }
+      },
+      "1538074452508": {
+        "type": "newsletter",
+        "settings": {
+          "title": "Join the team",
+          "subheading": "Sign up for early access, and free shiping above $100 + easy returns  and money back gurantee.",
+          "newsletter_richtext": "",
+          "frontpage_text_align": "left",
+          "wide_display": true,
+          "show_first_name": false,
+          "show_last_name": false,
+          "newsletter_background": "#f6f6f6",
+          "newsletter_text": "#000000"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "blocks": {
+          "1538075121191": {
+            "type": "filter_by_collection",
+            "settings": {
+            }
+          }
+        },
+        "block_order": [
+          "1538075121191"
+        ],
+        "settings": {
+          "products_per_row": 3,
+          "pagination_limit": 12,
+          "display_collection_header_title": true,
+          "collection_breadcrumb": false,
+          "collection_tags": false,
+          "collection_sort": false,
+          "featured_collection_image": false,
+          "image": "",
+          "text_position": "center",
+          "text_alignment": "center",
+          "parallax_effect": false,
+          "parallax_image_height": 400,
+          "toggle": false
+        }
+      },
+      "featured-text": {
+        "type": "featured-text",
+        "settings": {
+          "image": "",
+          "title": "Feel & Perform Your Best",
+          "show_divider": false,
+          "content": "<p>You will know exactly what you are taking and what is going into your body. We have nothing <br>to hide and everything to show as we are using the top of the line ingredients.<\/p>",
+          "text_size": "regular_text",
+          "text_alignment": "center",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "content-with-icon": {
+        "type": "content-with-icon",
+        "blocks": {
+          "1538075997039": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ingredients.png",
+              "link": "",
+              "title": "Better Ingredients",
+              "text": "<p>It has survived not only five centuries, <br>the leap into electronic typesetting.<\/p>"
+            }
+          },
+          "1538076023125": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/mind.png",
+              "link": "",
+              "title": "Healthy mind",
+              "text": "<p>It has survived not only five centuries, <br>the leap into electronic typesetting.<\/p>"
+            }
+          },
+          "1538076046829": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/body.png",
+              "link": "",
+              "title": "Healthy body",
+              "text": "<p>It has survived not only five centuries, <br>the leap into electronic typesetting.<\/p>"
+            }
+          },
+          "1538076063132": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/natural.png",
+              "link": "",
+              "title": "Natural",
+              "text": "<p>It has survived not only five centuries, <br>the leap into electronic typesetting.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1538075997039",
+          "1538076023125",
+          "1538076046829",
+          "1538076063132"
+        ],
+        "settings": {
+          "featured_contents_per_row": 4,
+          "featured_links_style": "",
+          "rounded_image": true,
+          "show_divider": false
+        }
+      },
+      "related-products": {
+        "type": "related-products",
+        "settings": {
+          "display_related_products": true,
+          "products_per_row": 3
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "blog_breadcrumb": false,
           "blog_tags": false,
           "blog_author": false,
-          "blog_date": true,
+          "blog_date": false,
           "blog_comment_count": true,
-          "read_more_link": true
+          "read_more_link": true,
+          "blog_posts_per_row": 3,
+          "blog_posts_per_page": 12,
+          "image": "",
+          "image_blog_headline": "My blog",
+          "image_blog_subtitle": "<p>This is a subheading for your blog page<\/p>",
+          "text_position": "center",
+          "text_alignment": "center",
+          "parallax_effect": true,
+          "parallax_image_height": 400,
+          "toggle": false
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "blog_breadcrumb": false,
+          "blog_tags": false,
+          "blog_author": false,
+          "blog_date": false,
+          "display_social_buttons": true,
+          "blog_comment_count": true,
+          "read_more_link": true,
+          "blog_additional_articles": false,
+          "banner_image": false,
+          "text_position": "center",
+          "text_alignment": "center",
+          "slideshow_article_darken": false,
+          "parallax_effect": true,
+          "parallax_image_height": 400,
+          "toggle": false
+        }
+      },
+      "search-template": {
+        "type": "search-template",
+        "settings": {
+          "search_breadcrumb": true,
+          "products_per_row": 3,
+          "pagination_limit": 48,
+          "blog_author": false,
+          "read_more_link": true,
+          "blog_date": true,
+          "toggle": false
+        }
+      },
+      "image-with-text-overlay-section": {
+        "type": "image-with-text-overlay-section",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Anointed_Fighter_Nutrition-11.png",
+          "vertical_alignment": "middle",
+          "headline_animation": "animate_down",
+          "title": "",
+          "subtitle": "",
+          "text_position": "center",
+          "text_alignment": "center",
+          "button_label": "",
+          "link": "",
+          "homepage_arrow": false,
+          "parallax_effect": false,
+          "parallax_image_height": 600
+        }
+      },
+      "page-content-grid": {
+        "type": "page-content-grid",
+        "blocks": {
+          "1538076509230": {
+            "type": "box",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2018-06-14_at_12.24.54_PM_Copy_2.png",
+              "title": "Deontrai Cambell",
+              "content": "<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>"
+            }
+          },
+          "1538076534122": {
+            "type": "box",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/AFN_Adam_Hagaman_1.png",
+              "title": "Deontrai Cambell",
+              "content": "<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1538076509230",
+          "1538076534122"
+        ],
+        "settings": {
+          "featured_boxes_per_row": 2,
+          "title": "Fitness Supplements Founded on Prayer",
+          "sub_title": "Our Founders",
+          "featured_links_style": "",
+          "show_divider": false
+        }
+      },
+      "content-gallery": {
+        "type": "content-gallery",
+        "blocks": {
+          "1538076625872": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "text": ""
+            }
+          }
+        },
+        "block_order": [
+          "1538076625872"
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Anointed_Fighter_Nutrition-7.png",
+          "layout": "left",
+          "title": "What Makes our Products Different?",
+          "sub_title": "No Proprietary Ingredients EVER! You will know exactly what you are taking and what is going into your body. We have nothing to hide and everything to show as we are using the top of the line ingredients.",
+          "text_alignment": "left",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "page-image-text": {
+        "type": "page-image-text",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Anointed_Fighter_Nutrition-15.png",
+          "layout": "right",
+          "title": "Why Choose Us",
+          "text": "<p>You don't skimp on your workouts and we don't skimp on our formulas. Anointed Fighter Nutrition brings the world&rsquo;s top Workout, Sports Nutrition and Bodybuilding Products. Designed with Prayer, Pastors, and Athletes, for optimal health and scientifically formulated for maximum effectiveness. We provide you with the clinical nutrition that you need to support your body before, during and after workouts. It's time to Get Healthy both Spiritually and Physically and get Anointed Fighter Nutrition!<\/p>\n<p>As with all our products they are always 3rd party tested. We stand behind our products, which is why we offer a 365 day Complete Money back guarantee so you have nothing to loose and healthy lifestyle to gain. Proudly made in the USA in a cGMP and FDA registered certified facility.<\/p>",
+          "text_alignment": "left",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "page-sidebar-template": {
+        "type": "page-sidebar-template",
+        "blocks": {
+          "1538076950373": {
+            "type": "menu",
+            "settings": {
+              "custom_menu_linklist": "tc-sidebar"
+            }
+          }
+        },
+        "block_order": [
+          "1538076950373"
+        ],
+        "settings": {
+          "toggle": false,
+          "banner_title": "Have a question, we are here to help!",
+          "banner_content": "<p>Email: Info@AnointedFighterNutrition.com<br>Phone: (855) 281-7772<\/p>"
+        }
+      },
+      "contact-template": {
+        "type": "contact-template",
+        "blocks": {
+          "1538077106179": {
+            "type": "menu",
+            "settings": {
+              "custom_menu_linklist": "tc-sidebar"
+            }
+          }
+        },
+        "block_order": [
+          "1538077106179"
+        ],
+        "settings": {
+          "banner_image": "",
+          "banner_title": "Have a question, we are here to help!",
+          "banner_content": "<p>Email: Info@AnointedFighterNutrition.com<br>Phone: (855) 281-7772<\/p>",
+          "contact_text_position": "center",
+          "contact_text_alignment": "center",
+          "map_address": "",
+          "title": "Come and visit",
+          "address_and_hours": "<p>123 Fake Street<\/p><p>Toronto, Canada<\/p><p>Mon - Fri, 10am - 9pm<\/p><p>Saturday, 11am - 9pm<\/p><p>Sunday, 11am - 5pm<\/p>",
+          "store_hours": true,
+          "info_text_color": "#000000",
+          "info_color": "#ffffff",
+          "image": "",
+          "text_alignment": "left",
+          "map_position": "left",
+          "zoom_level": 12,
+          "contact_form_text": "",
+          "api_key": "",
+          "show_pin": true,
+          "button_label": "Directions",
+          "map_style": "default",
+          "parallax_effect": true,
+          "parallax_image_height": 400
         }
       }
     },
     "content_for_index": [
       "1482978157864",
-      "1482978216893",
-      "1482978233631",
       "1482978247786",
-      "1482978263392",
-      "1482978288287"
+      "1538072460410",
+      "1538072669116",
+      "1482978233631",
+      "1538073088152",
+      "1538073289578",
+      "1538073634383",
+      "1538073710653",
+      "1538073917539",
+      "1538073983112",
+      "1538074085596",
+      "1538074452508"
     ]
   }
 }
