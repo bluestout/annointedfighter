@@ -51,6 +51,119 @@
   </div>
 {% endif %}
 
+{% if blog.handle == 'programs' %}
+<div class="container-fluid content">
+  <div class="subscription--overview-wrapper">
+    <h1 class="text-align--left"><strong>{{ article.title }}</strong></h1>
+    <div class="content clearfix">
+      <div class="half columns">
+        <img  src="{{ article.image | img_url: '1024x' }}"
+              alt="{% if article.image.alt != blank %}{{ article.image.alt }}{% else %}{{ article.title | escape }}{% endif %}"
+              data-src="{{ article.image | img_url: '2048x' }}"
+              class="lazyload lazyload--fade-in"
+              data-sizes="auto"
+              data-srcset=" {{ article.image | img_url: '2048x' }} 2048w,
+                            {{ article.image | img_url: '1600x' }} 1600w,
+                            {{ article.image | img_url: '1200x' }} 1200w,
+                            {{ article.image | img_url: '1000x' }} 1000w,
+                            {{ article.image | img_url: '800x' }} 800w,
+                            {{ article.image | img_url: '600x' }} 600w,
+                            {{ article.image | img_url: '400x' }} 400w"
+               />
+      </div>
+      <div class="half columns omega">
+        <ul class="features">
+          <li><strong>{{ 'blogs.subscription.main_goal' | t }}</strong>{{ article.metafields["global"]["program_main_goal"] }}</li>
+          <li><strong>{{ 'blogs.subscription.workout_type' | t }}</strong>{{ article.metafields["global"]["program_workout_type"] }}</li>
+          <li><strong>{{ 'blogs.subscription.level' | t }}</strong>{{ article.metafields["global"]["program_level"] }}</li>
+          <li><strong>{{ 'blogs.subscription.duration' | t }}</strong>{{ article.metafields["global"]["program_period"] }}</li>
+          <li><strong>{{ 'blogs.subscription.days' | t }}</strong>{{ article.metafields["global"]["program_days_per_week"] }}</li>
+          <li><strong>{{ 'blogs.subscription.gender' | t }}</strong>{{ article.metafields["global"]["program_gender"] }}</li>
+          <li><strong>{{ 'blogs.subscription.equipment' | t }}</strong>{{ article.metafields["global"]["program_equipment"] }}</li>
+          <li><strong>{{ 'blogs.subscription.supplement' | t }}</strong>{{ article.metafields["global"]["program_supplements"] }}</li>
+          <li><a href="/pages/programs" class="btn action_button">{{ 'blogs.subscription.back_button' | t }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="subscription--detail-wrapper">
+    <div id="tab-container" class="tab-container">
+     <ul class='etabs'>
+       <li class='tab'><a href="#tabs-description">{{ 'blogs.subscription.tab_description_title' | t }}<i class="fa fa-plus"></i><i class="fa fa-minus"></i></a></li>
+       <li class='tab'><a href="#tabs-meet-coach">{{ 'blogs.subscription.tab_meet_coach_title' | t }}<i class="fa fa-plus"></i><i class="fa fa-minus"></i></a></li>
+       <li class='tab'><a href="#tabs-program-sessions">{{ 'blogs.subscription.tab_session_title' | t }}<i class="fa fa-plus"></i><i class="fa fa-minus"></i></a></li>
+     </ul>
+     <div id="tabs-description">
+       <p>{{ article.content }}</p>
+     </div>
+     <div id="tabs-meet-coach">
+       <div class="container-fluid">
+         <div class="nine columns alpha">
+           <h1 class="text-align--left"><strong>{{ article.metafields["global"]["program_coach_name"] }}</strong></h1>
+           <p>{{ article.metafields["global"]["role"] }} | {{ article.excerpt }}</p>
+           <p>{{ article.metafields["global"]["program_coach_description"] }}</p>
+         </div>
+         <div class="seven columns">
+           <img src="{{ article.metafields["global"]["program_coach_image"] }}">
+         </div>
+       </div>
+     </div>
+     <div id="tabs-program-sessions">
+       <div class="container-fluid">
+         <div class="four columns">
+           <table>
+             <tr>
+               <td>Day1</td>
+               <td>{{ article.metafields["global"]["program_session_name1"] }}</td>
+               <td>{{ 'blogs.subscription.go_to_session' | t }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></td>
+             </tr>
+             <tr>
+               <td>Day2</td>
+               <td>{{ article.metafields["global"]["program_session_name2"] }}</td>
+               <td>{{ 'blogs.subscription.go_to_session' | t }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></td>
+             </tr>
+             <tr>
+               <td>Day3</td>
+               <td>{{ article.metafields["global"]["program_session_name3"] }}</td>
+               <td>{{ 'blogs.subscription.go_to_session' | t }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></td>
+             </tr>
+             <tr>
+               <td>Day4</td>
+               <td>{{ article.metafields["global"]["program_session_name4"] }}</td>
+               <td>{{ 'blogs.subscription.go_to_session' | t }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></td>
+             </tr>
+             <tr>
+               <td>Day5</td>
+               <td>{{ article.metafields["global"]["program_session_name5"] }}</td>
+               <td>{{ 'blogs.subscription.go_to_session' | t }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></td>
+             </tr>
+             <tr>
+               <td>Day6</td>
+               <td>{{ article.metafields["global"]["program_session_name6"] }}</td>
+               <td>{{ 'blogs.subscription.go_to_session' | t }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></td>
+             </tr>
+             <tr>
+               <td>Day7</td>
+               <td>{{ article.metafields["global"]["program_session_name7"] }}</td>
+               <td>{{ 'blogs.subscription.go_to_session' | t }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i></td>
+             </tr>
+           </table>
+         </div>
+         <div class="twelve columns omega">
+           img
+         </div>
+       </div>
+       <div class="session-content">
+         <p class="description--title">{{ 'blogs.subscription.session_description' | t }}</p>
+         <p>{{ article.metafields["global"]["program_session_description1"] }}</p>
+         <a href="#" class="action_button">{{ 'blogs.subscription.question_button' | t }}</a>
+         <a href="#" class="action_button">{{ 'blogs.subscription.next_session_button' | t }}</a>
+       </div>
+     </div>
+   </div>
+  </div>
+</div>
+{% else %}
 <div class="container-fluid content banner-title">
   <h1 style="text-transform: none;">{{ blog.title | escape }}</h1>
 </div>
@@ -401,6 +514,7 @@
     {% include "blog-sidebar", blog_handle: blog.handle %}
   {% endpaginate %}
 </div>
+{% endif %}
 
 <style>
   {% if section.settings.banner_image %}

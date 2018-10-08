@@ -1,7 +1,7 @@
 <div class="container-fluid clearfix">
   <div class="homepage_content section clearfix image_with_text image-text--align-{{ section.settings.layout }}">
     {% capture image_layout %}
-      <div class="image_column {% if section.settings.layout == 'left' %}alpha animate_left{% else %}omega animate_right{% endif %}">
+      <div class="image_column mobile_hidden {% if section.settings.layout == 'left' %}alpha animate_left{% else %}omega animate_right{% endif %}">
         {% if section.settings.image != blank %}
           <img  src="{{ section.settings.image | img_url: '2048x' }}"
                 alt="{{ section.settings.image.alt }}"

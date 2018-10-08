@@ -3,48 +3,57 @@
     <div class="section clearfix feature">
       {% for block in section.blocks %}
         <div class="{% if section.settings.featured_boxes_per_row == 2 %}eight columns {% cycle 'alpha', 'omega' %}{% elsif section.settings.featured_boxes_per_row == 3 %}one-third column {% cycle 'alpha', '', 'omega' %}{% else %}four columns {% cycle 'alpha', '', '', 'omega' %}{% endif %} {% if section.settings.featured_links_style != blank %}{{ section.settings.featured_links_style }} {% cycle 'delay-025s', 'delay-05s', 'delay-075s', 'delay-1s' %}{% endif %} center">
-
           <div  class="lazyload bcg {% if block.settings.image == nil %}bcg-placeholder{% endif %}">
-              <div class="hsContainer">
-                <img  alt="{{ block.settings.image.alt }}"
-                      {% if block.settings.image != nil %}
-                        src="{{ block.settings.image | img_url: '300x' }}"
-                        data-src="{{ block.settings.image | img_url: '2048x' }}"
-                        class="lazyload lazyload--fade-in hsContainer__image"
-                        sizes="100vw"
-                        srcset="  {{ block.settings.image | img_url: '2048x' }} 2048w,
-                                  {{ block.settings.image | img_url: '1600x' }} 1600w,
-                                  {{ block.settings.image | img_url: '1200x' }} 1200w,
-                                  {{ block.settings.image | img_url: '1000x' }} 1000w,
-                                  {{ block.settings.image | img_url: '800x' }} 800w,
-                                  {{ block.settings.image | img_url: '600x' }} 600w,
-                                  {{ block.settings.image | img_url: '400x' }} 400w"
-                      {% else %}
-                        src="{{ 'placeholder.svg' | asset_url }}"
-                        class="hsContainer__image"
+            <div class="hsContainer">
+              <img  alt="{{ block.settings.image.alt }}"
+                    {% if block.settings.image != nil %}
+                      src="{{ block.settings.image | img_url: '300x' }}"
+                      data-src="{{ block.settings.image | img_url: '2048x' }}"
+                      class="lazyload lazyload--fade-in hsContainer__image"
+                      sizes="100vw"
+                      srcset="  {{ block.settings.image | img_url: '2048x' }} 2048w,
+                                {{ block.settings.image | img_url: '1600x' }} 1600w,
+                                {{ block.settings.image | img_url: '1200x' }} 1200w,
+                                {{ block.settings.image | img_url: '1000x' }} 1000w,
+                                {{ block.settings.image | img_url: '800x' }} 800w,
+                                {{ block.settings.image | img_url: '600x' }} 600w,
+                                {{ block.settings.image | img_url: '400x' }} 400w"
+                    {% else %}
+                      src="{{ 'placeholder.svg' | asset_url }}"
+                      class="hsContainer__image"
+                    {% endif %}
+                     />
+              <div class="hsContent mobile_hidden">
+                <div class="container">
+                  <div class="columns {% if block.settings.text_position == 'left' %} eight offset-by-one {% elsif block.settings.text_position == 'right' %} eight {% else %} twelve offset-by-two {% endif %} align_{{ block.settings.text_alignment }}">
+                    <div class="box-content">
+                      {% if block.settings.title != blank %}
+                        <h3>{{ block.settings.title | escape }}</h3>
                       {% endif %}
-                       />
-                <div class="hsContent">
-                  <div class="container">
-                    <div class="columns {% if block.settings.text_position == 'left' %} eight offset-by-one {% elsif block.settings.text_position == 'right' %} eight {% else %} twelve offset-by-two {% endif %} align_{{ block.settings.text_alignment }}">
-                      <div class="box-content">
-                        {% if block.settings.title != blank %}
-                          <h3>{{ block.settings.title | escape }}</h3>
-                        {% endif %}
-                        {% if block.settings.button_label != blank %}
-                          <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}>
-                            {{ block.settings.button_label | escape }}&nbsp;&nbsp;&nbsp;<span>&rarr;</span>
-                          </a>
-                        {% endif %}
-                      </div>
+                      {% if block.settings.button_label != blank %}
+                        <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}>
+                          {{ block.settings.button_label | escape }}&nbsp;&nbsp;&nbsp;<span>&rarr;</span>
+                        </a>
+                      {% endif %}
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="mobile_only">
+              <div class="box-content {% if block.settings.text_position == 'left' %}text-align--left{% else %}text-align--right{% endif %}">
+                {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title | escape }}</h3>
+                {% endif %}
+                {% if block.settings.button_label != blank %}
+                  <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}>
+                    {{ block.settings.button_label | escape }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
           </div>
-
         </div>
-
       {% endfor %}
     </div>
   </div>

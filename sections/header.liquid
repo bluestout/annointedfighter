@@ -17,7 +17,7 @@
 {% endunless %}
 
 <div id="header" class="mm-fixed-top Fixed mobile-header mobile-sticky-header--{{ section.settings.fixed_header }}" data-search-enabled="{{ section.settings.search_enabled }}">
-  <a href="#nav" class="icon-menu" aria-haspopup="true" aria-label="{{ 'layout.general.menu' | t }}"><span>{{ 'layout.general.menu' | t }}</span></a>
+  <a href="#nav" class="icon-menu" aria-haspopup="true" aria-label="{{ 'layout.general.menu' | t }}"></a>
   <a href="{{ shop.url }}" title="{{ shop.name }}" class="mobile_logo logo">
     {% if section.settings.logo_mobile != nil %}
       <img src="{{ section.settings.logo_mobile | img_url: '410x' }}" alt="{{ shop.name }}" />

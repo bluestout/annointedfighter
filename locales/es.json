@@ -107,6 +107,16 @@
       "moderated": "Los comentarios se aprobarán antes de mostrarse.",
       "success_moderated": "Tu comentario ha sido publicado con éxito. Será aprobado antes de mostrarse.",
       "success": "¡Tu comentario ha sido publicado con éxito! ¡Gracias!"
+    },
+    "subscription": {
+      "main_goal": "Main Goal",
+      "workout_type": "Workout Type",
+      "level": "Level",
+      "duration": "Program Duration",
+      "days": "Days Per Week",
+      "gender": "Gender",
+      "equipment": "Equipment Required",
+      "supplement": "Recommended Supplements"
     }
   },
   "collections": {

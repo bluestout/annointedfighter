@@ -104,6 +104,16 @@
       "moderated": "张贴前管理员会先审核您的留言",
       "success_moderated": "你的留言已寄出，张贴前管理员会先审核您的留言。",
       "success": "你的留言已张贴成功，谢谢您！"
+    },
+    "subscription": {
+      "main_goal": "Main Goal",
+      "workout_type": "Workout Type",
+      "level": "Level",
+      "duration": "Program Duration",
+      "days": "Days Per Week",
+      "gender": "Gender",
+      "equipment": "Equipment Required",
+      "supplement": "Recommended Supplements"
     }
   },
   "collections": {

@@ -107,6 +107,24 @@
       "moderated": "Comments will be approved before showing up.",
       "success_moderated": "Your comment was posted successfully. It will be approved before showing up.",
       "success": "Your comment was posted successfully! Thank you!"
+    },
+    "subscription": {
+      "main_goal": "Main Goal",
+      "workout_type": "Workout Type",
+      "level": "Level",
+      "duration": "Program Duration",
+      "days": "Days Per Week",
+      "gender": "Gender",
+      "equipment": "Equipment Required",
+      "supplement": "Recommended Supplements",
+      "back_button": "Back to the program",
+      "tab_description_title": "Workout Description",
+      "tab_meet_coach_title": "Meet the coach",
+      "tab_session_title": "Program Sessions",
+      "go_to_session": "Go to the session",
+      "session_description": "Session Description",
+      "question_button": "Ask a question",
+      "next_session_button": "Go to the next session"
     }
   },
   "collections": {

@@ -1,6 +1,12 @@
 <div class="footer">
   <div class="container">
-
+    <div class="mobile_only">
+      {% if section.settings.footer_social_icons %}
+        <div class="js-social-icons">
+          {% include 'social-icons' %}
+        </div>
+      {% endif %}
+    </div>
     <div class="seven columns">
       {% if section.settings.footer_heading_left != blank %}
       {{ section.settings.footer_heading_left }}
@@ -14,7 +20,7 @@
 
     <div class="nine columns align_right">
       {% if section.settings.footer_social_icons %}
-        <div class="js-social-icons">
+        <div class="js-social-icons mobile_hidden">
           {% include 'social-icons' %}
         </div>
       {% endif %}

@@ -12,6 +12,12 @@
         </h2>
       {% endif %}
 
+      {% if section.settings.text != blank %}
+      <div class="mobile_only">
+        {{ section.settings.text }}
+      </div>
+      {% endif %}
+
       {% if section.blocks.size > 0 %}
         <div class="gallery-bar">
           {% for block in section.blocks %}
@@ -53,7 +59,7 @@
         </div>
       {% endif %}
         <div class="gallery-note clearfix">
-          <div class="twelve columns">
+          <div class="twelve columns mobile_hidden">
           {% if section.settings.text != blank %}
             {{ section.settings.text }}
           {% endif %}
